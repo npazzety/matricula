@@ -19,6 +19,9 @@ public class Prerequisitos {
     @Column(name = "prerequisito")
     private int idPrerequisito;
 
+    @Column(name = "idclase")
+    private int idClase;
+
     @ManyToMany(mappedBy = "prerequisito")
     private List<Clases> clases;
     
