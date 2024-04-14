@@ -5,6 +5,8 @@ import java.sql.Date;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -38,5 +40,9 @@ public class Alumnos {
 
     @Column(name = "fechacreacion")
     private Date fechaCreacion;
+
+    @ManyToMany
+    @JoinTable(name = "alumno_clase", JoinC)
+    private List
 }
 

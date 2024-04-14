@@ -11,7 +11,7 @@ import lombok.Data;
 @Entity
 @Table(name = "prerequisitos")
 
-public class Prerequisios {
+public class Prerequisitos {
 
     @Id
     @Column(name = "prerequisito")
