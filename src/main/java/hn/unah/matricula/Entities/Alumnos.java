@@ -46,5 +46,11 @@ public class Alumnos {
     @ManyToMany
     @JoinTable(name = "alumno_clase", joinColumns = @JoinColumn(name = "idalumno"), inverseJoinColumns = @JoinColumn(name = "idclase"))
     private List<Clases> clases;
+
+    @ManyToMany
+    @JoinTable(name = "alumno_docente", joinColumns = @JoinColumn(name ="idalumno"), inverseJoinColumns = @JoinColumn(name = "iddocente"))
+    private List<Docentes> docentes; 
+
 }
+
 
