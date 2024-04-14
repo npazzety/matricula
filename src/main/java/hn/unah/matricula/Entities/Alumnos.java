@@ -1,10 +1,12 @@
 package hn.unah.matricula.Entities;
 
 import java.sql.Date;
+import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
@@ -42,7 +44,7 @@ public class Alumnos {
     private Date fechaCreacion;
 
     @ManyToMany
-    @JoinTable(name = "alumno_clase", JoinC)
-    private List
+    @JoinTable(name = "alumno_clase", joinColumns = @JoinColumn(name = "idalumno"), inverseJoinColumns = @JoinColumn(name = "idclase"))
+    private List<Clases> clases;
 }
 
