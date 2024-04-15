@@ -1,4 +1,4 @@
-package hn.unah.matricula.Dtos;
+package hn.unah.matricula;
 
 import lombok.Data;
 
@@ -8,7 +8,7 @@ public class DatosAlumnosDto {
 
 
     private String correo;
-    
+
     private String contraseña;
     
 }

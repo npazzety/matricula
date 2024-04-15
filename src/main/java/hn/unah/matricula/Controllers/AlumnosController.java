@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import hn.unah.matricula.Dtos.DatosAlumnosDto;
+import hn.unah.matricula.DatosAlumnosDto;
 import hn.unah.matricula.Entities.Alumnos;
 import hn.unah.matricula.Services.impl.AlumnosServiceImpl;
 import org.springframework.web.bind.annotation.PostMapping;

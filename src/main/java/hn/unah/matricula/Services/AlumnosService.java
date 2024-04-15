@@ -2,7 +2,7 @@ package hn.unah.matricula.Services;
 import java.util.List;
 
 import hn.unah.matricula.CreateAlumnoDTO;
-import hn.unah.matricula.Dtos.DatosAlumnosDto;
+import hn.unah.matricula.DatosAlumnosDto;
 import hn.unah.matricula.Entities.Alumnos;
 
 

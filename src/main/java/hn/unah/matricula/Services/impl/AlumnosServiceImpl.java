@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import hn.unah.matricula.CreateAlumnoDTO;
-import hn.unah.matricula.Dtos.DatosAlumnosDto;
+import hn.unah.matricula.DatosAlumnosDto;
 import hn.unah.matricula.Entities.Alumnos;
 import hn.unah.matricula.Repositories.AlumnosRepository;
 import hn.unah.matricula.Services.AlumnosService;
@@ -31,10 +31,15 @@ public class AlumnosServiceImpl implements AlumnosService {
 
         for(int i = 0; i < 7; i++){
             siguientesdigitos += Math.floor(Math.random() * 10);
-
         }
         String numeroCuenta = anio + siguientesdigitos;
-        alumno.setNumeroCuenta(numeroCuenta);
+
+        Alumnos nvoalumno = new Alumnos();
+
+        nvoalumno.setNombre(alumno.getNombre());
+        nvoalumno.setApellido(alumno.getApellidos());
+        nvoalumno.setCorreo(alumno.getCorreo());
+        nvoalumno.setApellido(alumno.getContraseña());
 
 
         return this.crearAlumno(alumno);
