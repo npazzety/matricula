@@ -21,7 +21,6 @@ public class AlumnosServiceImpl implements AlumnosService {
 
     @Override
     public Alumnos crearAlumno(AlumnoDTO alumno) {
-
         try {
             Alumnos nuevoAlumno = new Alumnos();
             

@@ -17,8 +17,8 @@ Content-Type: application/json
 
 {
   "nombre": "primernombre segundonombre",
-  "apellidos": "primerape segundoapellido",
+  "apellidos": "pri segu",
   "direccion": "FM",
   "sexo": false,
-  "contrasena": "holanuevo1234"
+  "contrasena": "hhholanuevo1234"
 }
