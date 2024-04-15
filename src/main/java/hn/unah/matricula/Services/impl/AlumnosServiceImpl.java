@@ -1,15 +1,22 @@
 package hn.unah.matricula.Services.impl;
 
 import java.sql.Date;
+import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import hn.unah.matricula.CreateAlumnoDTO;
+import hn.unah.matricula.Dtos.DatosAlumnosDto;
 import hn.unah.matricula.Entities.Alumnos;
+import hn.unah.matricula.Repositories.AlumnosRepository;
 import hn.unah.matricula.Services.AlumnosService;
 
 @Service
 public class AlumnosServiceImpl implements AlumnosService {
+
+    @Autowired
+    private AlumnosRepository alumnosRepository;
 
     @SuppressWarnings("deprecation")
     @Override
@@ -31,6 +38,32 @@ public class AlumnosServiceImpl implements AlumnosService {
 
 
         return this.crearAlumno(alumno);
+
+
     }
+
+    @Override
+    public List<Alumnos> obtenerAlumnos() {
+       return (List<Alumnos>) this.alumnosRepository.findAll();
+    }
+
+
+    @Override
+    public boolean verificarAlumno(DatosAlumnosDto alumnoVerificar) {
+
+        for(Alumnos alumno : obtenerAlumnos()){
+            if (alumno.getCorreo().equals(alumnoVerificar.getCorreo())) {
+
+                if (alumno.getContraseña().equals(alumnoVerificar.getContraseña())) {
+                    return true;
+                } 
+            }
+        }
+        return false;
+    }
+
+
+
+
 
 }
