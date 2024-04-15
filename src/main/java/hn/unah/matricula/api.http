@@ -1,0 +1,24 @@
+### obtener lista de alumnos
+GET http://localhost:8080/api/alumnos/obtener
+Content-Type: application/json
+
+### inicio de sesión
+POST http://localhost:8080/api/alumno/verificacion
+Content-Type: application/json
+
+{
+  "correo": "hola@gmail.com",
+  "contraseña": "hola"
+}
+
+### crea un estudiante
+POST http://localhost:8080/api/alumnos/crear
+Content-Type: application/json
+
+{
+  "nombre": "primernombre segundonombre",
+  "apellidos": "pri segu",
+  "direccion": "FM",
+  "sexo": false,
+  "contrasena": "hhholanuevo1234"
+}

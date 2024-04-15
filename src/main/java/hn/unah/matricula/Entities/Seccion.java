@@ -27,10 +27,10 @@ public class Seccion {
     private Date horaFin;
 
     @JoinColumn(name = "idclase", referencedColumnName = "idclase")
-    @ManyToOne()
+    @ManyToOne
     private Clases clases;
 
-    @JoinColumn(name = "iddocente", referencedColumnName = "iddocente")
+    @JoinColumn(name = "iddocente", referencedColumnName = "numerocuenta")
     @ManyToOne
     private Docentes docentes;
 

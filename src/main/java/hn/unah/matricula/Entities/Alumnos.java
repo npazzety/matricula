@@ -1,7 +1,9 @@
 package hn.unah.matricula.Entities;
 
-import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -9,6 +11,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -37,10 +40,10 @@ public class Alumnos {
 
     private int indice;
 
-    private String contraseña;
+    private String contrasena;
 
     @Column(name = "fechacreacion")
-    private Date fechaCreacion;
+    private LocalDate fechaCreacion;
 
     @ManyToMany
     @JoinTable(name = "alumno_clase", joinColumns = @JoinColumn(name = "idalumno"), inverseJoinColumns = @JoinColumn(name = "idclase"))
@@ -50,6 +53,9 @@ public class Alumnos {
     @JoinTable(name = "alumno_docente", joinColumns = @JoinColumn(name ="idalumno"), inverseJoinColumns = @JoinColumn(name = "iddocente"))
     private List<Docentes> docentes; 
 
+    @OneToOne
+    @JsonBackReference
+    private Carreras carrera;
 }
 
 

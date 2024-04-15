@@ -1,5 +1,7 @@
 package hn.unah.matricula.Entities;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -23,10 +25,8 @@ public class HistorialAlumno {
     @JoinColumn(name = "numerocuenta", referencedColumnName = "numerocuenta")
     private Alumnos alumnos;
 
-    @Id
-    @JoinColumn(name = "idclase", referencedColumnName = "idclase")
-    @OneToMany()
-    private Clases clases;
+    @OneToMany
+    private List<Clases> clases;
 
     @JoinColumn(name = "idreporte", referencedColumnName = "idreporte")
     @OneToOne

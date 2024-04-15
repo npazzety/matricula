@@ -1,10 +1,10 @@
-package hn.unah.matricula;
+package hn.unah.matricula.Dtos;
 
 import lombok.Data;
 
 @Data
 
-public class CreateDocenteDTO {
+public class DocenteDTO {
 
     private String nombre;
     
