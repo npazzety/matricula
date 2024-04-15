@@ -39,7 +39,6 @@ public class Alumnos {
 
     private String contraseña;
 
-
     @Column(name = "fechacreacion")
     private Date fechaCreacion;
 
