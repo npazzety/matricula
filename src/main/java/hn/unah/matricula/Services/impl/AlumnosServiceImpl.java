@@ -34,16 +34,23 @@ public class AlumnosServiceImpl implements AlumnosService {
         }
         String numeroCuenta = anio + siguientesdigitos;
 
+        char primeraLetra = alumno.getApellidos().charAt(0);
+
+        String cuentaEmail = alumno.getNombre().toLowerCase() + primeraLetra + "@unah.hn";
+
         Alumnos nvoalumno = new Alumnos();
 
         nvoalumno.setNombre(alumno.getNombre());
         nvoalumno.setApellido(alumno.getApellidos());
-        nvoalumno.setCorreo(alumno.getCorreo());
         nvoalumno.setApellido(alumno.getContraseña());
+        nvoalumno.setFechaCreacion(date);
+        nvoalumno.setCorreo(cuentaEmail);
+        nvoalumno.setNumeroCuenta(numeroCuenta);
+        nvoalumno.setSexo(alumno.isSexo());;
 
+        this.alumnosRepository.save(nvoalumno);
 
-        return this.crearAlumno(alumno);
-
+        return nvoalumno;
 
     }
 
