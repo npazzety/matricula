@@ -29,9 +29,11 @@ public class Clases {
     @ManyToMany(mappedBy = "clases")
     private List<Alumnos> alumnos; 
 
+    @ManyToMany
     @JoinTable(name = "clases_carrera", joinColumns = @JoinColumn(name = "idclase"), inverseJoinColumns = @JoinColumn(name = "idcarrera"))
     private List<Carreras> carreras;
 
+    @ManyToMany
     @JoinTable(name = "clase_requisito", joinColumns = @JoinColumn(name = "idclase"), inverseJoinColumns = @JoinColumn(name = "idprerequisito"))
     private List<Prerequisitos> prerequisitos;
 }

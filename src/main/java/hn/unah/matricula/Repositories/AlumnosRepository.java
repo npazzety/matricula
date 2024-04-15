@@ -5,5 +5,5 @@ import org.springframework.data.repository.CrudRepository;
 import hn.unah.matricula.Entities.Alumnos;
 
 public interface AlumnosRepository extends CrudRepository<Alumnos, String> {
-    
+  public Alumnos findByCorreo(String correo); 
 }

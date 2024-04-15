@@ -22,7 +22,7 @@ public class Prerequisitos {
     @Column(name = "idclase")
     private int idClase;
 
-    @ManyToMany(mappedBy = "prerequisito")
+    @ManyToMany()
     private List<Clases> clases;
     
 }

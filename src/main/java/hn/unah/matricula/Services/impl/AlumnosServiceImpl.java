@@ -1,16 +1,17 @@
 package hn.unah.matricula.Services.impl;
 
-import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import hn.unah.matricula.CreateAlumnoDTO;
+import hn.unah.matricula.Dtos.AlumnoDTO;
 import hn.unah.matricula.Dtos.DatosAlumnosDto;
 import hn.unah.matricula.Entities.Alumnos;
 import hn.unah.matricula.Repositories.AlumnosRepository;
 import hn.unah.matricula.Services.AlumnosService;
+import hn.unah.matricula.util.AlumnoUtil;
 
 @Service
 public class AlumnosServiceImpl implements AlumnosService {
@@ -18,28 +19,37 @@ public class AlumnosServiceImpl implements AlumnosService {
     @Autowired
     private AlumnosRepository alumnosRepository;
 
-    @SuppressWarnings("deprecation")
     @Override
-    public Alumnos crearAlumno(CreateAlumnoDTO alumno) {
+    public Alumnos crearAlumno(AlumnoDTO alumno) {
 
-        Date date = new Date(0);
-        date.getYear();
+        try {
+            Alumnos nuevoAlumno = new Alumnos();
+            
+            // verificar si el correo ya existe
+            String correo;
+            int contador = 0;
+            do {
+                correo = AlumnoUtil.generarCorreo(alumno.getNombre(), alumno.getApellidos(), contador);
+                contador++;
+            } while(null != alumnosRepository.findByCorreo(correo));
+    
+            String numeroCuenta = AlumnoUtil.crearNumeroCuenta(); 
+            nuevoAlumno.setNumeroCuenta(numeroCuenta);
+            nuevoAlumno.setNombre(alumno.getNombre());
+            nuevoAlumno.setApellido(alumno.getApellidos());
+            nuevoAlumno.setSexo(alumno.isSexo());
+            nuevoAlumno.setDireccion(alumno.getDireccion());
+            nuevoAlumno.setCarrera(alumno.getCarrera());
+            nuevoAlumno.setIndice(100);
+            nuevoAlumno.setCorreo(correo);        
+            nuevoAlumno.setContrasena(alumno.getContrasena());
+            nuevoAlumno.setFechaCreacion(LocalDate.now());
+    
+            return this.alumnosRepository.save(nuevoAlumno);
 
-        String anio = date.toString();
-
-        int siguientesdigitos = 0;
-
-        for(int i = 0; i < 7; i++){
-            siguientesdigitos += Math.floor(Math.random() * 10);
-
+        } catch (Error e) {
+            return null;
         }
-        String numeroCuenta = anio + siguientesdigitos;
-        alumno.setNumeroCuenta(numeroCuenta);
-
-
-        return this.crearAlumno(alumno);
-
-
     }
 
     @Override
@@ -51,14 +61,13 @@ public class AlumnosServiceImpl implements AlumnosService {
     @Override
     public boolean verificarAlumno(DatosAlumnosDto alumnoVerificar) {
 
-        for(Alumnos alumno : obtenerAlumnos()){
-            if (alumno.getCorreo().equals(alumnoVerificar.getCorreo())) {
+        if (null == this.alumnosRepository.findByCorreo(alumnoVerificar.getCorreo()))
+            return false;
+        // como el alumno existe se comprueba la contrasena
+        Alumnos alumno = this.alumnosRepository.findByCorreo(alumnoVerificar.getCorreo());
+        if (alumno.getContrasena().equals(alumnoVerificar.getContraseña()))
+            return true;
 
-                if (alumno.getContraseña().equals(alumnoVerificar.getContraseña())) {
-                    return true;
-                } 
-            }
-        }
         return false;
     }
 
