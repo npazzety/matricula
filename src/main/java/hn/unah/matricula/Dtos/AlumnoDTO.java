@@ -1,6 +1,5 @@
 package hn.unah.matricula.Dtos;
 
-
 import hn.unah.matricula.Entities.Carreras;
 import lombok.Data;
 
@@ -18,7 +17,7 @@ public class AlumnoDTO {
   private String contrasena;
 
   private Carreras carrera;
-  
+
 }
 
 

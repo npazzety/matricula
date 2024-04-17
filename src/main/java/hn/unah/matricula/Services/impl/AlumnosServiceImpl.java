@@ -1,10 +1,12 @@
 package hn.unah.matricula.Services.impl;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import hn.unah.matricula.Dtos.AlumnoDTO;
 import hn.unah.matricula.Dtos.DatosAlumnosDto;
@@ -12,6 +14,7 @@ import hn.unah.matricula.Entities.Alumnos;
 import hn.unah.matricula.Repositories.AlumnosRepository;
 import hn.unah.matricula.Services.AlumnosService;
 import hn.unah.matricula.util.AlumnoUtil;
+import hn.unah.matricula.util.ImageStorage;
 
 @Service
 public class AlumnosServiceImpl implements AlumnosService {
@@ -20,7 +23,7 @@ public class AlumnosServiceImpl implements AlumnosService {
     private AlumnosRepository alumnosRepository;
 
     @Override
-    public Alumnos crearAlumno(AlumnoDTO alumno) {
+    public Alumnos crearAlumno(AlumnoDTO alumno, MultipartFile image) {
         try {
             Alumnos nuevoAlumno = new Alumnos();
             
@@ -31,7 +34,15 @@ public class AlumnosServiceImpl implements AlumnosService {
                 correo = AlumnoUtil.generarCorreo(alumno.getNombre(), alumno.getApellidos(), contador);
                 contador++;
             } while(null != alumnosRepository.findByCorreo(correo));
-    
+
+            // guarda la imagen
+            String imagePath = "";
+            try {
+                imagePath = ImageStorage.saveImage(image);
+            } catch(IOException e) {
+                return null;
+            }
+
             String numeroCuenta = AlumnoUtil.crearNumeroCuenta(); 
             nuevoAlumno.setNumeroCuenta(numeroCuenta);
             nuevoAlumno.setNombre(alumno.getNombre());
@@ -43,6 +54,7 @@ public class AlumnosServiceImpl implements AlumnosService {
             nuevoAlumno.setCorreo(correo);        
             nuevoAlumno.setContrasena(alumno.getContrasena());
             nuevoAlumno.setFechaCreacion(LocalDate.now());
+            nuevoAlumno.setFoto(imagePath);
     
             return this.alumnosRepository.save(nuevoAlumno);
 
@@ -69,9 +81,5 @@ public class AlumnosServiceImpl implements AlumnosService {
 
         return false;
     }
-
-
-
-
 
 }
