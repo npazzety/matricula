@@ -7,6 +7,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
@@ -26,10 +27,8 @@ public class Carreras {
     @Column(name = "cantidadestudiantes")
     private int cantidadestudiantes;
 
-
-    @JoinColumn(name = "dni", referencedColumnName = "dni")
     @OneToOne
-    private Coordinador coordinador;
+    private Docentes docentes;
  
     @ManyToMany(mappedBy = "carreras")
     private List<Clases> clases;

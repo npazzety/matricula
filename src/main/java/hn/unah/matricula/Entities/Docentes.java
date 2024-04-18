@@ -38,11 +38,9 @@ public class Docentes {
 
     private String especializacion;
 
-    private int likes;
+    private String contrasena;
 
-    private int dislikes;
-
-    private String contraseña;
+    private String clave;
 
     @Column(name = "fechacontratacion")
     private int fechaContratacion;

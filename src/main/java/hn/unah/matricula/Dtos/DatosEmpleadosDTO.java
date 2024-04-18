@@ -7,6 +7,6 @@ public class DatosEmpleadosDTO {
     
     private String clave;
 
-    private String contraseña;
+    private String contrasena;
 
 }

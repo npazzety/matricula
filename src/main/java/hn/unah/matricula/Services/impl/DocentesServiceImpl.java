@@ -25,7 +25,7 @@ public class DocentesServiceImpl implements DocentesService {
         return false;
     
     Docentes docente = this.docentesRepository.findByClave(docenteVerificar.getClave());
-    if (docente.getContraseña().equals(docenteVerificar.getContraseña()))
+    if (docente.getContrasena().equals(docenteVerificar.getContrasena()))
         return true;
 
     return false;

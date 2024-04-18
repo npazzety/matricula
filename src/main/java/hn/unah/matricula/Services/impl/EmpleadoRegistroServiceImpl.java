@@ -28,7 +28,7 @@ public class EmpleadoRegistroServiceImpl implements EmpleadoRegistroService{
         return false;
    
     EmpleadoRegistro empleado = this.empleadoRegistroRepository.findByClave(empleadoVerificar.getClave());
-    if (empleado.getContraseña().equals(empleadoVerificar.getContraseña()))
+    if (empleado.getContraseña().equals(empleadoVerificar.getContrasena()))
         return true;
 
     return false;

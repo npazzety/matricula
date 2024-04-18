@@ -7,5 +7,5 @@ public class DatosDocentesDTO {
     
     private String clave;
 
-    private String contraseña;
+    private String contrasena;
 }

@@ -14,7 +14,7 @@ public class DocenteDTO {
     
     private String especilizacion; 
 
-    private String contraseña;
+    private String contrasena;
 
     private boolean sexo;
 
