@@ -37,15 +37,9 @@ public class AlumnosServiceImpl implements AlumnosService {
         } catch(JsonProcessingException e) {
             return "No se pudo crear el alumno";
         }
-        // verificar si el correo ya existe
-        String correo;
-        int contador = 0;
-        do {
-            correo = AlumnoUtil.generarCorreo(alumno.getNombre(), alumno.getApellidos(), contador);
-            if (" " == correo)
-              return "no se puede crear correo";
-            contador++;
-        } while(null != alumnosRepository.findByCorreo(correo) && contador < 5);
+        
+        // El correo siempre será único debido a la implementacion usando un set.
+        String correo = AlumnoUtil.generarCorreo(alumno.getNombre(), alumno.getApellidos());
 
         // guarda la imagen
         String imagePath = "";
