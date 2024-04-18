@@ -9,6 +9,6 @@ public class DatosAlumnosDto {
 
     private String correo;
 
-    private String contraseña;
+    private String contrasena;
     
 }
