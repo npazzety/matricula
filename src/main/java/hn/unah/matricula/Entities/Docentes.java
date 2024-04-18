@@ -32,6 +32,8 @@ public class Docentes {
 
     private String corre;
 
+    private String departamento;
+
     private String foto;
 
     private String especializacion;

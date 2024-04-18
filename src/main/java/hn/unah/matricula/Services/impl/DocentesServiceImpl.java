@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import hn.unah.matricula.Dtos.DatosDocentesDTO;
+import hn.unah.matricula.Dtos.DocenteDTO;
 import hn.unah.matricula.Entities.Docentes;
 import hn.unah.matricula.Repositories.DocentesRepository;
 import hn.unah.matricula.Services.DocentesService;
@@ -33,6 +34,19 @@ public class DocentesServiceImpl implements DocentesService {
     @Override
     public List<Docentes> obtenerDocentes() {
         return (List<Docentes>) this.docentesRepository.findAll();
+    }
+
+    @Override
+    public Docentes crearDocente(DocenteDTO docente) {
+
+        Docentes nvoDocente = new Docentes();
+        nvoDocente.setNombre(docente.getNombre());
+        nvoDocente.setApellido(docente.getApellido());
+        nvoDocente.setCorre(docente.getCorreo());
+        nvoDocente.setSexo(docente.isSexo());
+        nvoDocente.setDepartamento(docente.getDepartamento());
+        nvoDocente.setFoto(docente.getFoto());
+        return this.docentesRepository.save(nvoDocente);
     }
 
 
