@@ -19,6 +19,9 @@ public class AlumnoUtil {
 
   public static String generarCorreo(String nombre, String apellido, int contador) {
 
+    if (null == nombre) {
+      return " ";
+    }
     String[] nombres = nombre.split(" ");
     String[] apellidos = apellido.split(" ");
  

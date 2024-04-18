@@ -7,7 +7,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class ImageStorage {
 
-  private static final String FOLDER_PATH = "\\Users\\Carlo\\OneDrive\\carlos-unah\\unah-2024\\IP\\lenguajes\\img-back"; 
+  private static String FOLDER_PATH = "C:\\Users\\X\\documents\\images\\".replace("\\", "/"); 
 
   public static String saveImage(MultipartFile image) throws IOException {
     String filepath = FOLDER_PATH + image.getOriginalFilename();
