@@ -6,7 +6,6 @@ import lombok.Data;
 
 public class DatosAlumnosDto {
 
-
     private String correo;
 
     private String contrasena;

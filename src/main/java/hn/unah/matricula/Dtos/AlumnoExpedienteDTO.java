@@ -12,8 +12,6 @@ public class AlumnoExpedienteDTO {
   @Column(name="direccion")
   private String direccion;
 
-  private String foto;
-
   private String correo;
   private boolean sexo;
   private String carrera;
