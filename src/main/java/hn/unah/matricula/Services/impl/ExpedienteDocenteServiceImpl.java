@@ -15,6 +15,12 @@ public class ExpedienteDocenteServiceImpl implements ExpedienteDocenteService{
     @Autowired
     private ExpedienteDocenteRepository expedienteDocenteRepository;
 
+    
+    @Override
+    public ExpedienteDocente CrearExpediente(ExpedienteDocente expedienteDocente) {
+        return this.expedienteDocenteRepository.save(expedienteDocente);
+    }
+
     @Override
     public List<ExpedienteDocente> obtenerExpedientesDocentes() {
 
@@ -33,6 +39,7 @@ public class ExpedienteDocenteServiceImpl implements ExpedienteDocenteService{
         }
         return null;
     }
+
 
     }
 

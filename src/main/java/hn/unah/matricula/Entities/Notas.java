@@ -23,8 +23,5 @@ public class Notas {
     private String numeroCuenta;
 
     private int nota;
-
-
-
     
 }
