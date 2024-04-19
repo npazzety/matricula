@@ -5,7 +5,6 @@ import java.util.List;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -26,10 +25,8 @@ public class Carreras {
     @Column(name = "cantidadestudiantes")
     private int cantidadestudiantes;
 
-
-    @JoinColumn(name = "dni", referencedColumnName = "dni")
     @OneToOne
-    private Coordinador coordinador;
+    private Docentes docentes;
  
     @ManyToMany(mappedBy = "carreras")
     private List<Clases> clases;

@@ -6,5 +6,6 @@ import hn.unah.matricula.Entities.Docentes;
 
 public interface DocentesRepository extends CrudRepository<Docentes, String> {
 
+    public Docentes findByClave(String clave); 
 
 }

@@ -26,11 +26,11 @@ public class HistorialAlumno {
     private Alumnos alumnos;
 
     @OneToMany
-    private List<Clases> clases;
+    private List<Seccion> secciones;
 
-    @JoinColumn(name = "idreporte", referencedColumnName = "idreporte")
+    @JoinColumn(name = "idnotas", referencedColumnName = "idnotas")
     @OneToOne
-    private ReporteAlumno reportealumno;
+    private Notas notas;
 
     
 }

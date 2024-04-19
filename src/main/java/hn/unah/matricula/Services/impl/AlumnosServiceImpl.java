@@ -80,10 +80,9 @@ public class AlumnosServiceImpl implements AlumnosService {
             return false;
         // como el alumno existe se comprueba la contrasena
         Alumnos alumno = this.alumnosRepository.findByCorreo(alumnoVerificar.getCorreo());
-        if (alumno.getContrasena().equals(alumnoVerificar.getContrasena())) {
+        if (alumno.getContrasena().equals(alumnoVerificar.getContrasena())){
             return true;
         }
-
         return false;
     }
 

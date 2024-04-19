@@ -32,15 +32,17 @@ public class Docentes {
 
     private String corre;
 
+    private String departamento;
+
     private String foto;
 
     private String especializacion;
 
-    private int likes;
+    private String contrasena;
 
-    private int dislikes;
+    private String clave;
 
-    private String contraseña;
+    private boolean coordinador;
 
     @Column(name = "fechacontratacion")
     private int fechaContratacion;

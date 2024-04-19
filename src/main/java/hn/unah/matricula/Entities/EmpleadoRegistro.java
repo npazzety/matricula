@@ -31,7 +31,7 @@ public class EmpleadoRegistro {
 
     private boolean sexo;
 
-    private int contraseña;
+    private String contraseña;
 
     private Date fechaContratacion;
 

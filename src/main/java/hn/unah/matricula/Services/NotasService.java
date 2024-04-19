@@ -1,5 +1,5 @@
 package hn.unah.matricula.Services;
 
-public interface CoordinadorService {
+public interface NotasService {
     
 }

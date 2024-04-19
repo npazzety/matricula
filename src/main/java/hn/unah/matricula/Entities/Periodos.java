@@ -26,5 +26,5 @@ public class Periodos {
     private Date anio;
 
     @OneToMany
-    private List<ReporteAlumno> reporteAlumno;
+    private List<Notas> notas;
 }
