@@ -83,7 +83,6 @@ public class AlumnosServiceImpl implements AlumnosService {
         if (alumno.getContrasena().equals(alumnoVerificar.getContrasena())){
             return true;
         }
-
         return false;
     }
 

@@ -1,5 +1,7 @@
 package hn.unah.matricula.Services.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,6 +30,19 @@ public class ExpedienteServiceImpl implements ExpedienteService{
         return null;
     }
 
+    @Override
+    public List<Expediente> obtenerExpedientes() {
+        return (List<Expediente>) this.expedienteRepository.findAll();
+    }
 
-    
+    @Override
+    public boolean eliminarUsuario(int id) {
+        try{
+            expedienteRepository.deleteById(id);
+            return true;
+        } catch(Exception err){
+            return false;
+        }
+    }
+
 }

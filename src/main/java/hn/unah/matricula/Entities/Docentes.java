@@ -42,6 +42,8 @@ public class Docentes {
 
     private String clave;
 
+    private boolean coordinador;
+
     @Column(name = "fechacontratacion")
     private int fechaContratacion;
 
