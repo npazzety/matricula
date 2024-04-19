@@ -21,13 +21,19 @@ public class Expediente {
 
     private String nombres;
 
+    private String correo;
+
     private String apellidos;
 
     private boolean sexo;
 
-    private String dirrecion;
+    private String foto;
 
-    private String carreras;
+    @Column(name = "dirrcion")
+    private String direccion;
+
+    @Column(name = "carreras")
+    private String carrera;
 
 
 }
