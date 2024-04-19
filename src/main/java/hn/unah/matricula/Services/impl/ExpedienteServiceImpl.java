@@ -52,7 +52,6 @@ public class ExpedienteServiceImpl implements ExpedienteService{
         expediente.setSexo(alumnoExpediente.isSexo());
         expediente.setFoto(imagePath);
         this.expedienteRepo.save(expediente);
-
         return true;
     }
 
