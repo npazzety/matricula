@@ -2,13 +2,13 @@ package hn.unah.matricula.Services;
 
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import hn.unah.matricula.Entities.Expediente;
 
 public interface ExpedienteService {
 
-    public Expediente CrearExpediente(Expediente expediente);
-
-    public boolean eliminarUsuario(int id);
+    public boolean crearExpediente(String expediente, MultipartFile image);
 
     public Expediente obtenerExpediente(int id);
 

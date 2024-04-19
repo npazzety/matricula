@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import hn.unah.matricula.Controllers.ExpedienteDocente;
+import hn.unah.matricula.Entities.ExpedienteDocente;
 import hn.unah.matricula.Repositories.ExpedienteDocenteRepository;
 import hn.unah.matricula.Services.ExpedienteDocenteService;
 

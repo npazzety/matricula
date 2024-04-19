@@ -1,48 +1,76 @@
 package hn.unah.matricula.Services.impl;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import hn.unah.matricula.Dtos.AlumnoExpedienteDTO;
 import hn.unah.matricula.Entities.Expediente;
 import hn.unah.matricula.Repositories.ExpedienteRepository;
 import hn.unah.matricula.Services.ExpedienteService;
+import hn.unah.matricula.util.ImageStorage;
 
 @Service
 public class ExpedienteServiceImpl implements ExpedienteService{
 
     @Autowired
-    private ExpedienteRepository expedienteRepository;
+    private ExpedienteRepository expedienteRepo;
+
+    @Autowired
+    private ObjectMapper objectMapper;
 
     @Override
-    public Expediente CrearExpediente(Expediente expediente) {
-        return this.expedienteRepository.save(expediente);
+    public boolean crearExpediente(String alumnoJsonString, MultipartFile image) {
+       Expediente expediente = new Expediente();
+       AlumnoExpedienteDTO alumnoExpediente = null;
+       
+       try {
+            alumnoExpediente = objectMapper.readValue(alumnoJsonString, AlumnoExpedienteDTO.class);
+        } catch(JsonProcessingException e) {
+            return false;
+        }
+
+        // guarda la imagen
+        String imagePath = "";
+        try {
+            imagePath = ImageStorage.saveImage(image);
+        } catch(IOException e) {
+            return false;
+        }
+
+        expediente.setApellidos(alumnoExpediente.getApellidos());
+        expediente.setCarrera(alumnoExpediente.getCarrera());
+        expediente.setCorreo(alumnoExpediente.getCorreo());
+        expediente.setDireccion(alumnoExpediente.getDireccion());
+        expediente.setNombres(alumnoExpediente.getNombres());
+        expediente.setSexo(alumnoExpediente.isSexo());
+        expediente.setFoto(imagePath);
+        this.expedienteRepo.save(expediente);
+
+        return true;
     }
 
     @Override
     public Expediente obtenerExpediente(int id) {
-        boolean existeExpediente = this.expedienteRepository.findById(id).isPresent();
+        boolean existeExpediente = this.expedienteRepo.findById(id).isPresent();
 
         if (existeExpediente) {
-            return this.expedienteRepository.findById(id).get();
+            return this.expedienteRepo.findById(id).get();
         }
         return null;
     }
 
     @Override
     public List<Expediente> obtenerExpedientes() {
-        return (List<Expediente>) this.expedienteRepository.findAll();
+       return (List<Expediente>) expedienteRepo.findAll(); 
     }
 
-    @Override
-    public boolean eliminarUsuario(int id) {
-        try{
-            expedienteRepository.deleteById(id);
-            return true;
-        } catch(Exception err){
-            return false;
-        }
-    }
 
+    
 }

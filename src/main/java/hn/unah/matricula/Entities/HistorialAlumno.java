@@ -4,6 +4,8 @@ import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
@@ -17,7 +19,7 @@ import lombok.Data;
 public class HistorialAlumno {
 
 
-    @Id
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idhistorial")
     private int idHistorial;
 
@@ -28,7 +30,7 @@ public class HistorialAlumno {
     @OneToMany
     private List<Seccion> secciones;
 
-    @JoinColumn(name = "idnotas", referencedColumnName = "idnotas")
+    @JoinColumn(name = "idnota", referencedColumnName = "idnota")
     @OneToOne
     private Notas notas;
 
