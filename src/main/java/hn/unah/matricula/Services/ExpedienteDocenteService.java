@@ -2,7 +2,8 @@ package hn.unah.matricula.Services;
 
 import java.util.List;
 
-import hn.unah.matricula.Controllers.ExpedienteDocente;
+import hn.unah.matricula.Entities.ExpedienteDocente;
+
 
 public interface ExpedienteDocenteService {
 
