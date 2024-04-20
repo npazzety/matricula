@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -42,6 +44,7 @@ public class Alumnos {
 
     private String contrasena;
 
+    @JsonDeserialize(using = LocalDateDeserializer.class)
     @Column(name = "fechacreacion")
     private LocalDate fechaCreacion;
 
@@ -56,6 +59,10 @@ public class Alumnos {
     @OneToOne
     @JsonBackReference
     private Carreras carrera;
+
+    @OneToOne
+    @JoinColumn(name="idexpediente", referencedColumnName = "idexpediente")
+    private Expediente expediente;
 }
 
 

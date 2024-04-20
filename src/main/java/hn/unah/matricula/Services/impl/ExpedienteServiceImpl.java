@@ -51,6 +51,7 @@ public class ExpedienteServiceImpl implements ExpedienteService{
         expediente.setNombres(alumnoExpediente.getNombres());
         expediente.setSexo(alumnoExpediente.isSexo());
         expediente.setFoto(imagePath);
+        expediente.setAceptado(false);
         this.expedienteRepo.save(expediente);
         return true;
     }
@@ -67,7 +68,7 @@ public class ExpedienteServiceImpl implements ExpedienteService{
 
     @Override
     public List<Expediente> obtenerExpedientes() {
-       return (List<Expediente>) expedienteRepo.findAll(); 
+       return (List<Expediente>) expedienteRepo.findByAceptado(false); 
     }
 
 

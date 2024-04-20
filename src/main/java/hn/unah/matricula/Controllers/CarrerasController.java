@@ -17,7 +17,7 @@ public class CarrerasController {
     @Autowired
     private CarrerasServiceImpl carrerasServiceImpl;
 
-    @GetMapping("/carreas/obtener")    
+    @GetMapping("/carreras/obtener")    
     public List<Carreras> obtenerAlumnos(){
         return this.carrerasServiceImpl.obtenerCarreras();
     }

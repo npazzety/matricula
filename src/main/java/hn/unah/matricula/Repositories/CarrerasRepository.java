@@ -5,5 +5,5 @@ import hn.unah.matricula.Entities.Carreras;
 
 
 public interface CarrerasRepository extends CrudRepository<Carreras, Integer> {
-    
+  Carreras findByNombre(String nombre);
 }
