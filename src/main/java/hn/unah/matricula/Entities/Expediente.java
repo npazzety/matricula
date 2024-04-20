@@ -29,7 +29,7 @@ public class Expediente {
 
     private String foto;
 
-    @Column(name = "dirrcion")
+    @Column(name = "direccion")
     private String direccion;
 
     @Column(name = "carreras")

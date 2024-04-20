@@ -7,15 +7,18 @@ import org.springframework.web.multipart.MultipartFile;
 import hn.unah.matricula.Entities.Expediente;
 import hn.unah.matricula.Services.impl.ExpedienteServiceImpl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 
 
 @RestController
-@RequestMapping("/api/expediente")
+@RequestMapping("/api/matricula/expediente")
 
 public class ExpedienteController {
 
@@ -28,10 +31,19 @@ public class ExpedienteController {
         return this.expedienteServiceImpl.crearExpediente(alumnoJsonString, image);
     }
     
-    @GetMapping("/obtener")
+    @GetMapping("/obtenePorId")
     public Expediente obtenerXid(@RequestParam (name = "id") int id) {
         return this.expedienteServiceImpl.obtenerExpediente(id);
     }
-    
-    
+
+    @GetMapping("/ObtenerTodos")
+    public List<Expediente> obtenerTodos(){
+        return this.expedienteServiceImpl.obtenerExpedientes();
+       }
+
+    @DeleteMapping("/eliminar")
+    public String eliminarCliente(@RequestParam (name = "id") int id) {
+        return this.expedienteServiceImpl.eliminarExpediente(id);
+    }
+
 }

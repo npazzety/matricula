@@ -18,7 +18,20 @@ public class ExpedienteDocenteServiceImpl implements ExpedienteDocenteService{
     
     @Override
     public ExpedienteDocente CrearExpediente(ExpedienteDocente expedienteDocente) {
-        return this.expedienteDocenteRepository.save(expedienteDocente);
+        
+        ExpedienteDocente nvoExpedienteDocente = new ExpedienteDocente();
+
+        nvoExpedienteDocente.setNombre(expedienteDocente.getNombre());
+        nvoExpedienteDocente.setApellido(expedienteDocente.getApellido());
+        nvoExpedienteDocente.setCorreo(expedienteDocente.getCorreo());
+        nvoExpedienteDocente.setSexo(expedienteDocente.isSexo());
+        nvoExpedienteDocente.setEspecializacion(expedienteDocente.getEspecializacion());
+        nvoExpedienteDocente.setContrasena(expedienteDocente.getContrasena());
+        nvoExpedienteDocente.setDepartamento(expedienteDocente.getDepartamento());
+        nvoExpedienteDocente.setFoto(expedienteDocente.getFoto());
+
+        return this.expedienteDocenteRepository.save(nvoExpedienteDocente);
+        
     }
 
     @Override
