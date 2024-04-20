@@ -42,6 +42,11 @@ public class AlumnosController {
         return this.alumnosServiceImpl.verificarAlumno(loginalumno);
     }
 
+    @Operation(summary = "Obtine un alumno por id")
+    @GetMapping("/alumnos/obtenerPorID")
+    public Alumnos obtenerDocentePorId(@RequestParam(name = "id") String id){
+        return this.alumnosServiceImpl.obtenerAlumnoPorId(id);
+    }
 }
 
 

@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import hn.unah.matricula.Dtos.DatosDocentesDTO;
@@ -40,5 +41,11 @@ public class DocentesController {
     @PostMapping("/docente/guardar")
     public Docentes guardarDocente(@RequestBody DocenteDTO docente){
         return this.docentesServiceImpl.crearDocente(docente);
+    }
+
+    @Operation(summary = "Obtine un docente por id")
+    @GetMapping("/obtenerPorID")
+    public Docentes obtenerDocentePorId(@RequestParam(name = "id") String id){
+        return this.docentesServiceImpl.obtenerDocentePorId(id);
     }
 }

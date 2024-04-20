@@ -86,6 +86,17 @@ public class AlumnosServiceImpl implements AlumnosService {
         return false;
     }
 
+    @Override
+    public Alumnos obtenerAlumnoPorId(String id) {
+        boolean existeAlumno = this.alumnosRepository.findById(id).isPresent();
+
+        if (existeAlumno) {
+            return this.alumnosRepository.findById(id).get();
+            
+        }
+        return null;
+    }
+
     
 
 }
