@@ -20,6 +20,7 @@ public class CarrerasController {
     @Autowired
     private CarrerasServiceImpl carrerasServiceImpl;
 
+
     @Operation(summary = "Obtiene todas las carrearas")
     @GetMapping("/carreas/obtener")    
     public List<Carreras> obtenerCarreras(){

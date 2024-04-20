@@ -10,10 +10,13 @@ import io.swagger.v3.oas.annotations.Operation;
 
 import java.util.List;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 
@@ -34,18 +37,23 @@ public class ExpedienteController {
     }
     
     @Operation(summary = "Obtiene el expediente del alumno por id")
-    @GetMapping("/obtenePorId")
-    public Expediente obtenerXid(@RequestParam (name = "id") int id) {
+    @GetMapping("/obtener/{id}")
+    public Expediente obtenerXid(@PathVariable int id) {
         return this.expedienteServiceImpl.obtenerExpediente(id);
     }
 
+    @GetMapping("/alumnos/obtener")
+    public List<Expediente> getExpedientesEstudiantes() {
+        return this.expedienteServiceImpl.obtenerExpedientes();
+    }
+    
     @Operation(summary = "Obtiene todos los expedientes de los alumnos")
     @GetMapping("/ObtenerTodos")
     public List<Expediente> obtenerTodos(){
         return this.expedienteServiceImpl.obtenerExpedientes();
        }
 
-       @Operation(summary = "Elimina expediente alumno por medio de un id")
+    @Operation(summary = "Elimina expediente alumno por medio de un id")
     @DeleteMapping("/eliminar")
     public String eliminarCliente(@RequestParam (name = "id") int id) {
         return this.expedienteServiceImpl.eliminarExpediente(id);
