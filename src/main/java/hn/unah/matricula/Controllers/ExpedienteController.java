@@ -10,8 +10,6 @@ import io.swagger.v3.oas.annotations.Operation;
 
 import java.util.List;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -42,17 +40,12 @@ public class ExpedienteController {
         return this.expedienteServiceImpl.obtenerExpediente(id);
     }
 
+    @Operation(summary = "Obtiene todos los expedientes de los alumnos")
     @GetMapping("/alumnos/obtener")
     public List<Expediente> getExpedientesEstudiantes() {
         return this.expedienteServiceImpl.obtenerExpedientes();
     }
     
-    @Operation(summary = "Obtiene todos los expedientes de los alumnos")
-    @GetMapping("/ObtenerTodos")
-    public List<Expediente> obtenerTodos(){
-        return this.expedienteServiceImpl.obtenerExpedientes();
-       }
-
     @Operation(summary = "Elimina expediente alumno por medio de un id")
     @DeleteMapping("/eliminar")
     public String eliminarCliente(@RequestParam (name = "id") int id) {
