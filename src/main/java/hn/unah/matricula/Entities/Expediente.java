@@ -32,6 +32,8 @@ public class Expediente {
     @Column(name = "direccion")
     private String direccion;
 
+    private boolean aceptado;
+
     @Column(name = "carreras")
     private String carrera;
 

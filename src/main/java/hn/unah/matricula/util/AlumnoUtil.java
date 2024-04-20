@@ -34,10 +34,12 @@ public class AlumnoUtil {
     String primerApellido = apellidos[0];
 
     int maxPrimerNombre = primerNombre.length() - 1;
+    int indice1 = (int) (Math.random() * maxPrimerNombre);
+    int indice2 = (int) (Math.random() * maxPrimerNombre);
     String correo = "";
 
     do {
-      correo = primerNombre.charAt((int) Math.floor(Math.random() * maxPrimerNombre)) + primerNombre.charAt((int) Math.floor(Math.random() * maxPrimerNombre)) + primerApellido + dominioCorreo;
+      correo = primerNombre.charAt(indice1) + "" + primerNombre.charAt(indice2) + primerApellido + dominioCorreo;
     } while(correosGenerados.contains(correo));
 
     correosGenerados.add(correo);

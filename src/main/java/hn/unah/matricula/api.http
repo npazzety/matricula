@@ -22,3 +22,10 @@ Content-Type: application/json
   "sexo": false,
   "contrasena": "hhholanuevo1234"
 }
+
+
+### obtener expedientes
+GET http://localhost:8080/api/expediente/alumnos/obtener
+
+### obtener por correo
+GET http://localhost:8080/api/alumno/correo/caflores
