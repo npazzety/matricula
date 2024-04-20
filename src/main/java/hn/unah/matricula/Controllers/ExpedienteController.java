@@ -41,17 +41,12 @@ public class ExpedienteController {
         return this.expedienteServiceImpl.obtenerExpediente(id);
     }
 
+    @Operation(summary = "Obtiene todos los expedientes de los alumnos")
     @GetMapping("/alumnos/obtener")
     public List<Expediente> getExpedientesEstudiantes() {
         return this.expedienteServiceImpl.obtenerExpedientes();
     }
     
-    @Operation(summary = "Obtiene todos los expedientes de los alumnos")
-    @GetMapping("/ObtenerTodos")
-    public List<Expediente> obtenerTodos(){
-        return this.expedienteServiceImpl.obtenerExpedientes();
-       }
-
     @Operation(summary = "Elimina expediente alumno por medio de un id")
     @DeleteMapping("/eliminar")
     public String eliminarExpediente(@RequestParam (name = "id") int id) {

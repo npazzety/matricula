@@ -85,7 +85,7 @@ public class AlumnosServiceImpl implements AlumnosService {
     @Override
     public boolean verificarAlumno(DatosAlumnosDto alumnoVerificar) {
 
-        if (null == this.alumnosRepository.findById(alumnoVerificar.getNumeroCuenta()))
+        if (null == this.alumnosRepository.findById(alumnoVerificar.getNumeroCuenta()).get())
             return false;
             // como el alumno existe se comprueba la contrasena
         Alumnos alumno = this.alumnosRepository.findById(alumnoVerificar.getNumeroCuenta()).get();

@@ -57,7 +57,7 @@ public class AlumnosController {
     @Operation(summary = "Funcion para verificar los alumnos")
     @PostMapping("/alumnos/verificacion")
     @CrossOrigin(origins = "*")
-    public boolean loginAlumno(DatosAlumnosDto loginalumno){
+    public boolean loginAlumno(@RequestBody DatosAlumnosDto loginalumno){
         return this.alumnosServiceImpl.verificarAlumno(loginalumno);
     }
 

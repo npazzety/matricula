@@ -22,7 +22,7 @@ public class CarrerasController {
 
 
     @Operation(summary = "Obtiene todas las carrearas")
-    @GetMapping("/carreas/obtener")    
+    @GetMapping("/obtener")    
     public List<Carreras> obtenerCarreras(){
         return this.carrerasServiceImpl.obtenerCarreras();
     }
