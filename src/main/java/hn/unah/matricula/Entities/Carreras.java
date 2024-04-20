@@ -21,7 +21,8 @@ import lombok.Data;
 @Entity
 public class Carreras {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idcarrera")
     @JsonManagedReference
     private int idCarrera;

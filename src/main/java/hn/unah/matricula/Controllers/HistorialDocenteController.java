@@ -26,12 +26,6 @@ public class HistorialDocenteController {
         return this.historialDocenteServiceImpl.obteberHistorialDocente(id);
     }
 
-    /*@Operation(summary = "Obtiene el historial del docente, y a su vez obtiene las clases que imparte el docente")
-    @PostMapping("/obtenerClasesDocente")
-    public HistorialDocenteClasesDTO obtenerHistorialDocenteClases(@RequestBody HistorialDocenteClasesDTO historialDocenteClases) {
-        return this.historialDocenteServiceImpl.obtenerHistorialDocenteClases(historialDocenteClases);
-    }*/
-
     @GetMapping("/obtenerClasesDocente")
     public HistorialDocenteClasesDTO postMethodName(@RequestBody HistorialDocenteClasesDTO historialDocenteClases) {
         return this.historialDocenteServiceImpl.obtenerHistorialDocenteClases(historialDocenteClases);
