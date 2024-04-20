@@ -2,6 +2,10 @@ package hn.unah.matricula.Entities;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -17,6 +21,7 @@ public class Equipos {
 
     @Id
     @Column(name = "idequipo")
+    @JsonManagedReference
     private int idEquipo;
 
     @Column(name = "tipoequipo")
@@ -25,6 +30,8 @@ public class Equipos {
     private String descripcion;
 
     @ManyToMany(mappedBy = "equipos")
+    @JsonBackReference
+    @JsonIgnore
     private List<Salon> salon;
 
 

@@ -2,6 +2,8 @@ package hn.unah.matricula.Entities;
 
 import java.sql.Date;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -15,6 +17,7 @@ public class EmpleadoRegistro {
 
     @Id
     @Column(name = "idempleado")
+    @JsonManagedReference
     private String idEmpleado;
 
     private String dni;

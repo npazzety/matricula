@@ -2,6 +2,10 @@ package hn.unah.matricula.Entities;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -19,6 +23,7 @@ public class Carreras {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idcarrera")
+    @JsonManagedReference
     private int idCarrera;
 
     private String nombre;
@@ -27,9 +32,13 @@ public class Carreras {
     @Column(name = "cantidadestudiantes")
     private int cantidadestudiantes;
 
+    @JsonBackReference
+    @JsonIgnore
     @OneToOne
     private Docentes docentes;
  
     @ManyToMany(mappedBy = "carreras")
+    @JsonBackReference
+    @JsonIgnore
     private List<Clases> clases;
 }

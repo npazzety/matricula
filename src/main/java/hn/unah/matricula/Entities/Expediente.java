@@ -1,5 +1,7 @@
 package hn.unah.matricula.Entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -17,6 +19,7 @@ public class Expediente {
     @Id
     @Column(name = "idexpediente")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonManagedReference
     private int idExpediente;
 
     private String nombres;

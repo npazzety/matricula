@@ -1,5 +1,7 @@
 package hn.unah.matricula.Entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -16,6 +18,7 @@ public class Notas {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="idnota")
+    @JsonManagedReference
     private int idNota;
 
     private int idSeccion;

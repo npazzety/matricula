@@ -10,6 +10,7 @@ import hn.unah.matricula.Dtos.HistorialDocenteClasesDTO;
 import hn.unah.matricula.Entities.HistorialDocente;
 import hn.unah.matricula.Services.impl.HistorialDocenteServiceImpl;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.parameters.RequestBody;
 
 @RestController
 @RequestMapping("/api/matricula/historialDocente")
@@ -25,10 +26,19 @@ public class HistorialDocenteController {
         return this.historialDocenteServiceImpl.obteberHistorialDocente(id);
     }
 
-    @Operation(summary = "Obtiene el historial del docente, y a su vez obtiene las clases que imparte el docente")
+    /*@Operation(summary = "Obtiene el historial del docente, y a su vez obtiene las clases que imparte el docente")
+    @PostMapping("/obtenerClasesDocente")
+    public HistorialDocenteClasesDTO obtenerHistorialDocenteClases(@RequestBody HistorialDocenteClasesDTO historialDocenteClases) {
+        return this.historialDocenteServiceImpl.obtenerHistorialDocenteClases(historialDocenteClases);
+    }*/
+
     @GetMapping("/obtenerClasesDocente")
-    public HistorialDocenteClasesDTO getMethodName(@RequestParam HistorialDocenteClasesDTO historialDocenteClases) {
+    public HistorialDocenteClasesDTO postMethodName(@RequestBody HistorialDocenteClasesDTO historialDocenteClases) {
         return this.historialDocenteServiceImpl.obtenerHistorialDocenteClases(historialDocenteClases);
     }
+    
+
+
+ 
     
 }

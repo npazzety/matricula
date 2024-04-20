@@ -2,6 +2,10 @@ package hn.unah.matricula.Entities;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -22,17 +26,24 @@ public class HistorialAlumno {
     @Column(name = "idhistorial")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonManagedReference
     private int idHistorial;
 
     @OneToOne()
     @JoinColumn(name = "numerocuenta", referencedColumnName = "numerocuenta")
+    @JsonBackReference
+    @JsonIgnore
     private Alumnos alumnos;
 
     @OneToMany
+    @JsonBackReference
+    @JsonIgnore
     private List<Seccion> secciones;
 
     @JoinColumn(name = "idnota", referencedColumnName = "idnota")
     @OneToOne
+    @JsonIgnore
+    @JsonBackReference
     private Notas notas;
 
     
