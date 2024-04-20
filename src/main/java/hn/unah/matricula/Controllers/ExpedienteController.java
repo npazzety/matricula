@@ -10,7 +10,6 @@ import io.swagger.v3.oas.annotations.Operation;
 
 import java.util.List;
 
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -55,7 +54,7 @@ public class ExpedienteController {
 
     @Operation(summary = "Elimina expediente alumno por medio de un id")
     @DeleteMapping("/eliminar")
-    public String eliminarCliente(@RequestParam (name = "id") int id) {
+    public String eliminarExpediente(@RequestParam (name = "id") int id) {
         return this.expedienteServiceImpl.eliminarExpediente(id);
     }
 
