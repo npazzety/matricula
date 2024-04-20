@@ -11,6 +11,8 @@ import hn.unah.matricula.Entities.Carreras;
 import hn.unah.matricula.Services.impl.CarrerasServiceImpl;
 import io.swagger.v3.oas.annotations.Operation;
 
+
+
 @RestController
 @RequestMapping("/api/matricula/carreras")
 public class CarrerasController {
@@ -24,4 +26,5 @@ public class CarrerasController {
     public List<Carreras> obtenerCarreras(){
         return this.carrerasServiceImpl.obtenerCarreras();
     }
+    
 }

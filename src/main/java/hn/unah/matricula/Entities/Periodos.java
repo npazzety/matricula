@@ -3,6 +3,10 @@ package hn.unah.matricula.Entities;
 import java.sql.Date;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -18,8 +22,10 @@ import lombok.Data;
 
 public class Periodos {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id 
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idperiodo")
+    @JsonManagedReference
     private int idPeriodo;
 
     @Column(name = "numeroperiodo")
@@ -28,5 +34,7 @@ public class Periodos {
     private Date anio;
 
     @OneToMany
+    @JsonBackReference
+    @JsonIgnore
     private List<Notas> notas;
 }

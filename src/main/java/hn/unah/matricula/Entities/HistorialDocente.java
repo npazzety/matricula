@@ -2,6 +2,9 @@ package hn.unah.matricula.Entities;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -26,9 +29,12 @@ public class HistorialDocente {
 
     @JoinColumn(name = "iddocente", referencedColumnName = "numerocuenta")
     @OneToOne
+    @JsonBackReference
     private Docentes docentes;
     
     @OneToMany
+    @JsonBackReference
+    @JsonIgnore
     private List<Seccion> seccion;
 
 

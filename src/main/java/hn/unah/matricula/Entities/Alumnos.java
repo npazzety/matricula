@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 
@@ -26,6 +28,7 @@ public class Alumnos {
 
     @Id
     @Column(name = "numerocuenta")
+    @JsonManagedReference
     private String numeroCuenta;
 
     private String nombre;
@@ -54,14 +57,19 @@ public class Alumnos {
 
     @ManyToMany
     @JoinTable(name = "alumno_docente", joinColumns = @JoinColumn(name ="idalumno"), inverseJoinColumns = @JoinColumn(name = "iddocente"))
+    @JsonIgnore
+    @JsonBackReference
     private List<Docentes> docentes; 
 
     @OneToOne
     @JsonBackReference
+    @JsonIgnore
     private Carreras carrera;
 
     @OneToOne
     @JoinColumn(name="idexpediente", referencedColumnName = "idexpediente")
+    @JsonBackReference
+    @JsonIgnore
     private Expediente expediente;
 }
 

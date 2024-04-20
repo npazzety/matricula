@@ -2,6 +2,10 @@ package hn.unah.matricula.Entities;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -17,12 +21,15 @@ public class Prerequisitos {
 
     @Id
     @Column(name = "prerequisito")
+    @JsonManagedReference
     private int idPrerequisito;
 
     @Column(name = "idclase")
     private int idClase;
 
     @ManyToMany()
+    @JsonBackReference
+    @JsonIgnore
     private List<Clases> clases;
     
 }
