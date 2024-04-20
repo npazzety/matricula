@@ -15,7 +15,7 @@ import hn.unah.matricula.Services.impl.AlumnosServiceImpl;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/matricula")
 public class AlumnosController {
     
     @Autowired
@@ -31,7 +31,7 @@ public class AlumnosController {
         return this.alumnosServiceImpl.obtenerAlumnos();
     }
 
-    @PostMapping("/alumno/verificacion")
+    @PostMapping("/alumnos/verificacion")
     public boolean loginAlumno(DatosAlumnosDto loginalumno){
         return this.alumnosServiceImpl.verificarAlumno(loginalumno);
     }

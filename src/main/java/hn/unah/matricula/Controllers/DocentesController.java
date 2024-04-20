@@ -15,7 +15,7 @@ import hn.unah.matricula.Entities.Docentes;
 import hn.unah.matricula.Services.impl.DocentesServiceImpl;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/matricula")
 public class DocentesController {
     
 

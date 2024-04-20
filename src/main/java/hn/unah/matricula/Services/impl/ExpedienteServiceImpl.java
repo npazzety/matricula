@@ -70,6 +70,18 @@ public class ExpedienteServiceImpl implements ExpedienteService{
        return (List<Expediente>) expedienteRepo.findAll(); 
     }
 
+    @Override
+    public String eliminarExpediente(int id) {
 
+        if(this.expedienteRepo.existsById(id)){
+            this.expedienteRepo.deleteById(id);
+            return "Expediente eliminado";
+        }        
+
+        return "No existe el Expediente";
+    }
+
+
+    
     
 }

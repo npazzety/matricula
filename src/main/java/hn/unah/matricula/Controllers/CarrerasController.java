@@ -11,14 +11,14 @@ import hn.unah.matricula.Entities.Carreras;
 import hn.unah.matricula.Services.impl.CarrerasServiceImpl;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/matricula/carreras")
 public class CarrerasController {
 
     @Autowired
     private CarrerasServiceImpl carrerasServiceImpl;
 
     @GetMapping("/carreas/obtener")    
-    public List<Carreras> obtenerAlumnos(){
+    public List<Carreras> obtenerCarreras(){
         return this.carrerasServiceImpl.obtenerCarreras();
     }
 }

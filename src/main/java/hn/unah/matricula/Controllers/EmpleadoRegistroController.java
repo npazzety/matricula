@@ -13,7 +13,7 @@ import hn.unah.matricula.Entities.EmpleadoRegistro;
 import hn.unah.matricula.Services.impl.EmpleadoRegistroServiceImpl;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/matricula")
 public class EmpleadoRegistroController {
     
     @Autowired
