@@ -14,8 +14,6 @@ public interface AlumnosService {
 
     public List<Alumnos> obtenerAlumnos();
 
-    public Alumnos obtenerAlumnoPorId(String id);
-    
     public Alumnos getAlumnoPorCorreo(String correo);
 
     public Alumnos getAlumnoPorId(String id);
