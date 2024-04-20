@@ -30,7 +30,7 @@ public class ExpedienteDocenteController {
         return this.expedienteDocenteServiceImpl.obtenerExpedientesDocentes();
     }    
 
-    @Operation(summary = "Guardael expediente de un docente")
+    @Operation(summary = "Guarda el expediente de un docente")
     @PostMapping("/guardar")
     public ExpedienteDocente guardarExpedienteDocente(@RequestBody ExpedienteDocente expedienteDocente){
         return this.expedienteDocenteServiceImpl.CrearExpediente(expedienteDocente);
