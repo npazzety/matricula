@@ -49,6 +49,16 @@ public class DocentesServiceImpl implements DocentesService {
         return this.docentesRepository.save(nvoDocente);
     }
 
+    @Override
+    public Docentes obtenerDocentePorId(String id) {
 
-     
-}
+        boolean existeDocente = this.docentesRepository.findById(id).isPresent();
+
+        if (existeDocente) {
+            return this.docentesRepository.findById(id).get();
+            
+        }
+        return null;
+    }
+    }
+

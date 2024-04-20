@@ -13,5 +13,7 @@ public interface ExpedienteService {
     public Expediente obtenerExpediente(int id);
 
     public List<Expediente> obtenerExpedientes();
+
+    public String eliminarExpediente(int id);
     
 }

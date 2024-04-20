@@ -19,8 +19,9 @@ import lombok.Data;
 public class HistorialAlumno {
 
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idhistorial")
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idHistorial;
 
     @OneToOne()

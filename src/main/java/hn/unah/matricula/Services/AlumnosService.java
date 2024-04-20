@@ -13,6 +13,8 @@ public interface AlumnosService {
     public boolean verificarAlumno(DatosAlumnosDto alumnoVerificar);
 
     public List<Alumnos> obtenerAlumnos();
+
+    public Alumnos obtenerAlumnoPorId(String id);
     
     public Alumnos getAlumnoPorCorreo(String correo);
 

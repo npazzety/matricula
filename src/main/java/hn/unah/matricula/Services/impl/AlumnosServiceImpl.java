@@ -106,6 +106,7 @@ public class AlumnosServiceImpl implements AlumnosService {
     public Alumnos getAlumnoPorId(String id) {
         objectMapper.registerModule(new JavaTimeModule());
         return this.alumnosRepository.findById(id).get();
+
     }
 
     

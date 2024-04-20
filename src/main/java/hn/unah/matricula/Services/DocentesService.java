@@ -13,5 +13,7 @@ public interface DocentesService {
     public List<Docentes> obtenerDocentes();
 
     public Docentes crearDocente(DocenteDTO docente);
+
+    public Docentes obtenerDocentePorId(String id);
     
 }

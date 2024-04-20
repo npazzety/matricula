@@ -15,6 +15,25 @@ public class ExpedienteDocenteServiceImpl implements ExpedienteDocenteService{
     @Autowired
     private ExpedienteDocenteRepository expedienteDocenteRepository;
 
+    
+    @Override
+    public ExpedienteDocente CrearExpediente(ExpedienteDocente expedienteDocente) {
+        
+        ExpedienteDocente nvoExpedienteDocente = new ExpedienteDocente();
+
+        nvoExpedienteDocente.setNombre(expedienteDocente.getNombre());
+        nvoExpedienteDocente.setApellido(expedienteDocente.getApellido());
+        nvoExpedienteDocente.setCorreo(expedienteDocente.getCorreo());
+        nvoExpedienteDocente.setSexo(expedienteDocente.isSexo());
+        nvoExpedienteDocente.setEspecializacion(expedienteDocente.getEspecializacion());
+        nvoExpedienteDocente.setContrasena(expedienteDocente.getContrasena());
+        nvoExpedienteDocente.setDepartamento(expedienteDocente.getDepartamento());
+        nvoExpedienteDocente.setFoto(expedienteDocente.getFoto());
+
+        return this.expedienteDocenteRepository.save(nvoExpedienteDocente);
+        
+    }
+
     @Override
     public List<ExpedienteDocente> obtenerExpedientesDocentes() {
 
@@ -33,6 +52,7 @@ public class ExpedienteDocenteServiceImpl implements ExpedienteDocenteService{
         }
         return null;
     }
+
 
     }
 

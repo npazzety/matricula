@@ -6,6 +6,8 @@ import hn.unah.matricula.Entities.ExpedienteDocente;
 
 
 public interface ExpedienteDocenteService {
+    
+    public ExpedienteDocente CrearExpediente(ExpedienteDocente expedienteDocente);
 
     public List<ExpedienteDocente> obtenerExpedientesDocentes();
 
