@@ -85,3 +85,7 @@ Content-Type: application/json
   "nombre": "B2",
   "numeroPisos": 4
 }
+
+
+### obtener edificios
+GET http://localhost:8080/api/edificio/obtener/edificios
