@@ -62,3 +62,26 @@ Content-Type: application/json
   "nombre": "INGENIERIA SISTEMAS",
   "coordinador": "20221001802"
 }
+
+### crear docente sin foto
+POST http://localhost:8080/api/matricula/docente/guardar
+Content-Type: multipart/form-data 
+
+{
+  "nombre": "erick vladimir",
+  "apellido": "coello baca",
+  "especializacion": "software",
+  "contrasena": "contrasena",
+  "sexo": true,
+  "coordinador": false,
+  "departamento": "copán"
+}
+
+### crear edificio
+POST http://localhost:8080/api/edificio/crear
+Content-Type: application/json
+
+{
+  "nombre": "B2",
+  "numeroPisos": 4
+}

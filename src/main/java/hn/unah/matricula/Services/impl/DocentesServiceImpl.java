@@ -34,13 +34,13 @@ public class DocentesServiceImpl implements DocentesService {
     public boolean verificarDocente(DatosDocentesDTO docenteVerificar) {
 
         if (null == this.docentesRepository.findByClave(docenteVerificar.getClave()))
-        return false;
+          return false;
     
-    Docentes docente = this.docentesRepository.findByClave(docenteVerificar.getClave());
-    if (docente.getContrasena().equals(docenteVerificar.getContrasena()))
-        return true;
+        Docentes docente = this.docentesRepository.findByClave(docenteVerificar.getClave());
+        if (docente.getContrasena().equals(docenteVerificar.getContrasena()))
+            return true;
 
-    return false;
+        return false;
     }
 
     @Override
@@ -106,6 +106,11 @@ public class DocentesServiceImpl implements DocentesService {
         }
 
         return coordinadores;
+    }
+
+    @Override
+    public Docentes getDocentePorClave(String clave) {
+        return this.docentesRepository.findByClave(clave);
     }
 }
 
