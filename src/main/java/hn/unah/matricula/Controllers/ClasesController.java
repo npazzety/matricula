@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,5 +23,11 @@ public class ClasesController {
     @GetMapping("/numeroCuentaDocente")
     public List<Clases> obtenerClasesDeDocente(@RequestParam String idDocente) {
         return clasesServiceImpl.obtenerClasesDeDocente(idDocente);
+    }
+
+    @Operation(summary = "Obtiene los requisitos de las clases")
+    @GetMapping("/{idClase}")
+    public List<Clases> obtenerClasesDeDocente(@PathVariable int idClase) {
+        return clasesServiceImpl.obtenerRequisitosDeClases(idClase);
     }
 }
