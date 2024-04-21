@@ -1,6 +1,5 @@
 package hn.unah.matricula.Services.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -43,6 +42,7 @@ public class ClasesServiceImpl implements ClasesService {
         return clases;
     }
 
+
     @Override
     public RequisitosClaseDTO obtenerRequisitosClases(RequisitosClaseDTO requisitos) {
 
@@ -52,20 +52,21 @@ public class ClasesServiceImpl implements ClasesService {
 
     if (claseOptional.isPresent() && prerequisitoOptional.isPresent()) {
         // Obtener los prerequisitos de la clase
-        List<Prerequisitos> prerequisitosClase = prerequisitosRepository.findByClaseIdClase(requisitos.getIdClase());
-        
-        // Obtener las clases asociadas a los prerequisitos
-        List<Clases> clasesRequisitos = new ArrayList<>();
-        for (Prerequisitos prerequisito : prerequisitosClase) {
-            clasesRequisitos.addAll(prerequisito.getClases());
-        }
+        Optional<Prerequisitos> prerequisitosClase = prerequisitosRepository.findById(requisitos.getIdClase());
 
-        // Aquí puedes hacer algo con las clasesRequisitos, por ejemplo, retornarlas o procesarlas de alguna manera
-        
-        return requisitos;
+        if (prerequisitosClase.isPresent()) {
+
+       
+            requisitos.setIdClase(0);
+            requisitos.setClases(null);
+               
+            return requisitos;
 
             }    
         return null;
     }
+
+    return null;
     
+    }
 }

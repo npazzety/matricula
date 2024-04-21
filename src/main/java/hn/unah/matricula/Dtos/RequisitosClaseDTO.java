@@ -11,12 +11,13 @@ public class RequisitosClaseDTO {
     private int idClase;
 
     private int idPrerequisito;
-
-    private List<Clases> clases;
-
+    
     private String codigo;
 
     private String nombre;
+
+    private List<Clases> clases;
+
 
 
 

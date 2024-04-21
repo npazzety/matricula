@@ -45,5 +45,6 @@ public class Clases {
     @ManyToMany
     @JoinTable(name = "clase_requisito", joinColumns = @JoinColumn(name = "idclase"), inverseJoinColumns = @JoinColumn(name = "idprerequisito"))
     @JsonBackReference
+    @JsonIgnore
     private List<Prerequisitos> prerequisitos;
 }
