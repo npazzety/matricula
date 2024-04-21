@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import hn.unah.matricula.Dtos.DatosEmpleadosDTO;
+import hn.unah.matricula.Dtos.EmpleadoRegistroDTO;
 import hn.unah.matricula.Entities.EmpleadoRegistro;
 import hn.unah.matricula.Services.impl.EmpleadoRegistroServiceImpl;
 import io.swagger.v3.oas.annotations.Operation;
@@ -30,6 +31,13 @@ public class EmpleadoRegistroController {
         return this.empleadoRegistroServiceImpl.obtenerEmpleados();
     }
 
+    @Operation(summary = "Crea un EmpleadoRegistro")
+    @PostMapping("/crearEmpleado")
+    public EmpleadoRegistro crearEmpleadp(@RequestBody EmpleadoRegistroDTO empleado) {
+        return this.empleadoRegistroServiceImpl.crearEmpleadoRegistro(empleado);
+    }
+    
+
     @Operation(summary = "Verifica el login de los empleados")
     @PostMapping("/empleado/verificacion")
     public boolean loginEmpleado(@RequestBody DatosEmpleadosDTO loginempleado){
@@ -41,11 +49,5 @@ public class EmpleadoRegistroController {
     public EmpleadoRegistro obtenerEmpleado(@PathVariable String clave) {
         return this.empleadoRegistroServiceImpl.obtenerEmpleado(clave);
     }
-    
-    @Operation(summary = "Crea un empleado de registro")
-    @PostMapping("/empleado/crear")
-    public EmpleadoRegistro crearEmpleado(@RequestBody EmpleadoRegistro empleado) {
-        return this.empleadoRegistroServiceImpl.crearEmpleado(empleado);
-    }
-    
+
 }

@@ -8,9 +8,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import hn.unah.matricula.Dtos.ClasesDTO;
 import hn.unah.matricula.Entities.Clases;
 import hn.unah.matricula.Services.impl.ClasesServiceImpl;
 import io.swagger.v3.oas.annotations.Operation;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
 
 @RestController
 @RequestMapping("/api/matricula/clases")
@@ -30,5 +35,11 @@ public class ClasesController {
     public List<Clases> obtenerClasesDeDocente(@PathVariable int idClase) {
         return clasesServiceImpl.obtenerRequisitosDeClases(idClase);
     }
+
+    @PostMapping("/crearClase")
+    public Clases postMethodName(@RequestBody ClasesDTO clases) {
+        return this.clasesServiceImpl.crearClases(clases);
+    }
+    
 
 }

@@ -1,23 +1,19 @@
 package hn.unah.matricula.Services.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-
 import hn.unah.matricula.Dtos.DatosEmpleadosDTO;
+import hn.unah.matricula.Dtos.EmpleadoRegistroDTO;
 import hn.unah.matricula.Entities.EmpleadoRegistro;
 import hn.unah.matricula.Repositories.EmpleadoRegistroRepository;
 import hn.unah.matricula.Services.EmpleadoRegistroService;
 
 @Service
 public class EmpleadoRegistroServiceImpl implements EmpleadoRegistroService{
-
-    @Autowired
-    private ObjectMapper objectMapper;
 
     @Autowired
     private EmpleadoRegistroRepository empleadoRegistroRepository;
@@ -45,13 +41,36 @@ public class EmpleadoRegistroServiceImpl implements EmpleadoRegistroService{
         return this.empleadoRegistroRepository.findByClave(clave);
     }
 
+
     @Override
-    public EmpleadoRegistro crearEmpleado(EmpleadoRegistro empleado) {
-        objectMapper.registerModule(new JavaTimeModule());
-        return this.empleadoRegistroRepository.save(empleado);
+    public EmpleadoRegistro crearEmpleadoRegistro(EmpleadoRegistroDTO empleado) {
+
+        Date fechaacual = new Date();
+        fechaacual.getTime();
+
+        String idempleado = "";
+        for(int i = 0; i < 7; i++) 
+          idempleado += Integer.toString((int) Math.floor(Math.random() * 10));
+
+        String clave = "";
+        for(int i = 0; i < 5; i++) 
+        idempleado += Integer.toString((int) Math.floor(Math.random() * 10));
+
+          EmpleadoRegistro nvoEmpleadoRegistro = new EmpleadoRegistro();
+
+          nvoEmpleadoRegistro.setIdEmpleado(idempleado);
+          nvoEmpleadoRegistro.setNombre(empleado.getNombre());
+          nvoEmpleadoRegistro.setApellido(empleado.getApellido());
+          nvoEmpleadoRegistro.setDireccion(empleado.getDireccion());
+          nvoEmpleadoRegistro.setCorreo(empleado.getCorreo());
+          nvoEmpleadoRegistro.setTelefono(empleado.getTelefono());
+          nvoEmpleadoRegistro.setSexo(empleado.isSexo());
+          nvoEmpleadoRegistro.setContrasena(empleado.getContrasena());
+          nvoEmpleadoRegistro.setFechaContratacion(fechaacual);
+          nvoEmpleadoRegistro.setClave(clave);
+         
+          return this.empleadoRegistroRepository.save(nvoEmpleadoRegistro);
     }
-    
- 
 
 
 }

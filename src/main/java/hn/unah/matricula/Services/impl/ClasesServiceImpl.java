@@ -1,6 +1,7 @@
 package hn.unah.matricula.Services.impl;
 
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -8,6 +9,7 @@ import hn.unah.matricula.Dtos.ClasesDTO;
 import hn.unah.matricula.Entities.Clases;
 import hn.unah.matricula.Entities.Docentes;
 import hn.unah.matricula.Entities.Prerequisitos;
+import hn.unah.matricula.Repositories.ClasesRepository;
 import hn.unah.matricula.Repositories.DocentesRepository;
 import hn.unah.matricula.Repositories.PrerequisitosRepository;
 import hn.unah.matricula.Services.ClasesService;
@@ -20,6 +22,9 @@ public class ClasesServiceImpl implements ClasesService {
 
     @Autowired
     private PrerequisitosRepository prerequisitosRepository;
+
+    @Autowired
+    private ClasesRepository clasesRepository;
 
     @Override
     public List<Clases> obtenerClasesDeDocente(String numeroCuentaDocente) {
@@ -51,8 +56,12 @@ public class ClasesServiceImpl implements ClasesService {
 
     @Override
     public Clases crearClases(ClasesDTO clases) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'crearClases'");
+        Clases nvoclase = new Clases();
+        nvoclase.setCodigo(clases.getCodigo());
+        nvoclase.setNombre(clases.getNombre());
+        nvoclase.setUv(clases.getUv());
+
+        return this.clasesRepository.save(nvoclase);
     }
 
 }
