@@ -1,8 +1,6 @@
 package hn.unah.matricula.Entities;
 
-import java.sql.Date;
-
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import java.util.Date;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -15,9 +13,8 @@ import lombok.Data;
 @Table(name = "empleadoregistro")
 public class EmpleadoRegistro {
 
-    @Id
+    @Id 
     @Column(name = "idempleado")
-    @JsonManagedReference
     private String idEmpleado;
 
     private String dni;
@@ -34,8 +31,9 @@ public class EmpleadoRegistro {
 
     private boolean sexo;
 
-    private String contraseña;
+    private String contrasena;
 
+    @Column(name="fechacontratacion")
     private Date fechaContratacion;
 
     private String clave;
