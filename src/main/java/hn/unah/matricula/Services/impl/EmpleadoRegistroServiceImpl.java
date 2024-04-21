@@ -54,7 +54,7 @@ public class EmpleadoRegistroServiceImpl implements EmpleadoRegistroService{
 
         String clave = "";
         for(int i = 0; i < 5; i++) 
-        idempleado += Integer.toString((int) Math.floor(Math.random() * 10));
+            clave += Integer.toString((int) Math.floor(Math.random() * 10));
 
           EmpleadoRegistro nvoEmpleadoRegistro = new EmpleadoRegistro();
 
