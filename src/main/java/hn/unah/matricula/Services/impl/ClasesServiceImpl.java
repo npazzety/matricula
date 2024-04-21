@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 
 import hn.unah.matricula.Entities.Clases;
 import hn.unah.matricula.Entities.Docentes;
-import hn.unah.matricula.Repositories.ClasesRepository;
 import hn.unah.matricula.Repositories.DocentesRepository;
 import hn.unah.matricula.Services.ClasesService;
 
@@ -15,10 +14,6 @@ public class ClasesServiceImpl implements ClasesService {
 
     @Autowired
     private DocentesRepository docentesRepository;
-
-    @Autowired
-    private ClasesRepository clasesRepository;
-
 
     @Override
     public List<Clases> obtenerClasesDeDocente(String numeroCuentaDocente) {
@@ -33,19 +28,5 @@ public class ClasesServiceImpl implements ClasesService {
         
         return clases;
     }
-
-
-    @Override
-    public Clases obtenerRequisitosClases(int id) {
-        
-        boolean existeClase = this.clasesRepository.findById(id).isPresent();
-
-        if (existeClase) {
-
-            return this.clasesRepository.findById(id).get();
-        }
-        return null;
-    }
-
 
 }
