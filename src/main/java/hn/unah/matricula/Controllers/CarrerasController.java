@@ -7,9 +7,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+
 import hn.unah.matricula.Entities.Carreras;
+
 import hn.unah.matricula.Services.impl.CarrerasServiceImpl;
 import io.swagger.v3.oas.annotations.Operation;
+
+
 
 
 
@@ -26,5 +30,8 @@ public class CarrerasController {
     public List<Carreras> obtenerCarreras(){
         return this.carrerasServiceImpl.obtenerCarreras();
     }
+
+ 
+    
     
 }
