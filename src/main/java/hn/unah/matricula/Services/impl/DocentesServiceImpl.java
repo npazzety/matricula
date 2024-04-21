@@ -1,5 +1,6 @@
 package hn.unah.matricula.Services.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,5 +60,18 @@ public class DocentesServiceImpl implements DocentesService {
         }
         return null;
     }
+
+    @Override
+    public List<Docentes> obtenerCoordinadores() {
+        ArrayList<Docentes> coordinadores = new ArrayList<>();
+        List<Docentes> docentes = (List<Docentes>) this.docentesRepository.findAll();
+
+        for (Docentes docente : docentes) {
+            if (docente.isCoordinador())
+              coordinadores.add(docente);
+        }
+
+        return coordinadores;
     }
+}
 

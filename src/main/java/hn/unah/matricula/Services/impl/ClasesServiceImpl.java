@@ -40,10 +40,10 @@ public class ClasesServiceImpl implements ClasesService {
         
         Prerequisitos prerequisitos = prerequisitosRepository.findById(idClase).orElse(null);
         if (prerequisitos == null) {
-            throw new RuntimeException("No se encontró el docente con ID: " + prerequisitos);
+            throw new RuntimeException("No se encontró el requisito de la clase con id : " + idClase);
         }
         
-        // Obtener las clases asociadas a las carreras del docente
+        // Obtener los requisitos de la clase
         List<Clases> clases = prerequisitos.getClases();
         
         return clases;
