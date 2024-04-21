@@ -10,15 +10,14 @@ public class DocenteDTO {
     
     private String apellido;
 
-    private String correo;
-    
     private String especilizacion; 
 
     private String contrasena;
 
     private boolean sexo;
 
+    private boolean coordinador;
+
     private String departamento;
 
-    private String foto;
 }

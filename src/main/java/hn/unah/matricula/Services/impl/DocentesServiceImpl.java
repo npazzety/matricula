@@ -1,20 +1,31 @@
 package hn.unah.matricula.Services.impl;
 
+import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import hn.unah.matricula.Dtos.DatosDocentesDTO;
 import hn.unah.matricula.Dtos.DocenteDTO;
 import hn.unah.matricula.Entities.Docentes;
 import hn.unah.matricula.Repositories.DocentesRepository;
 import hn.unah.matricula.Services.DocentesService;
+import hn.unah.matricula.util.AlumnoUtil;
+import hn.unah.matricula.util.DocenteUtil;
+import hn.unah.matricula.util.ImageStorage;
 
 @Service
 public class DocentesServiceImpl implements DocentesService {
 
+    @Autowired
+    private ObjectMapper objectMapper;
 
     @Autowired
     private DocentesRepository docentesRepository;
@@ -38,15 +49,38 @@ public class DocentesServiceImpl implements DocentesService {
     }
 
     @Override
-    public Docentes crearDocente(DocenteDTO docente) {
+    public Docentes crearDocente(String docenteJsonString, MultipartFile image) {
+        DocenteDTO docente = null;
+        try {
+            docente = objectMapper.readValue(docenteJsonString, DocenteDTO.class); 
+        } catch(JsonProcessingException e) {
+            return null;
+        }
+
+        String imagePath = "";
+        try {
+            imagePath = ImageStorage.saveImage(image);
+        } catch(IOException e) {
+            return null;
+        }
+
+        String numeroCuenta = AlumnoUtil.crearNumeroCuenta();
+        String clave = DocenteUtil.generarClave();
+        String correo = AlumnoUtil.generarCorreo(docente.getNombre(), docente.getApellido());
 
         Docentes nvoDocente = new Docentes();
+        nvoDocente.setNumeroCuenta(numeroCuenta);
+        nvoDocente.setClave(clave);
         nvoDocente.setNombre(docente.getNombre());
         nvoDocente.setApellido(docente.getApellido());
-        nvoDocente.setCorre(docente.getCorreo());
+        nvoDocente.setCoordinador(docente.isCoordinador());
+        nvoDocente.setEspecializacion(docente.getEspecilizacion());
+        nvoDocente.setContrasena(docente.getContrasena());
+        nvoDocente.setCorreo(correo);
         nvoDocente.setSexo(docente.isSexo());
-        nvoDocente.setDepartamento(docente.getDepartamento());
-        nvoDocente.setFoto(docente.getFoto());
+        nvoDocente.setDireccion(docente.getDepartamento());
+        nvoDocente.setFechaContratacion(LocalDate.now());
+        nvoDocente.setFoto(imagePath);
         return this.docentesRepository.save(nvoDocente);
     }
 
