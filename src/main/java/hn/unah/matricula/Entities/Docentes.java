@@ -1,5 +1,6 @@
 package hn.unah.matricula.Entities;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -37,8 +38,6 @@ public class Docentes {
 
     private String correo;
 
-    private String departamento;
-
     private String foto;
 
     private String especializacion;
@@ -50,7 +49,7 @@ public class Docentes {
     private boolean coordinador;
 
     @Column(name = "fechacontratacion")
-    private int fechaContratacion;
+    private LocalDate fechaContratacion;
 
     @ManyToMany(mappedBy = "docentes")
     @JsonBackReference

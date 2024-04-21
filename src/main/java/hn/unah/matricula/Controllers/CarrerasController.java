@@ -13,6 +13,7 @@ import hn.unah.matricula.Entities.Carreras;
 
 import hn.unah.matricula.Services.impl.CarrerasServiceImpl;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.parameters.RequestBody;
 
 
 @RestController
@@ -31,7 +32,7 @@ public class CarrerasController {
     
     @Operation(summary = "Registra/crea una carrera")
     @PostMapping("/registrar")
-    public boolean crearCarrera(CarreraDTO carrera) {
+    public boolean crearCarrera(@RequestBody CarreraDTO carrera) {
         try {
             return this.carrerasServiceImpl.registrarCarrera(carrera);
         } catch(Exception e) {
