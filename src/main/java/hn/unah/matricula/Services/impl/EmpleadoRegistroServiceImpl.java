@@ -5,6 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+
 import hn.unah.matricula.Dtos.DatosEmpleadosDTO;
 import hn.unah.matricula.Entities.EmpleadoRegistro;
 import hn.unah.matricula.Repositories.EmpleadoRegistroRepository;
@@ -12,6 +15,9 @@ import hn.unah.matricula.Services.EmpleadoRegistroService;
 
 @Service
 public class EmpleadoRegistroServiceImpl implements EmpleadoRegistroService{
+
+    @Autowired
+    private ObjectMapper objectMapper;
 
     @Autowired
     private EmpleadoRegistroRepository empleadoRegistroRepository;
@@ -28,10 +34,21 @@ public class EmpleadoRegistroServiceImpl implements EmpleadoRegistroService{
         return false;
    
     EmpleadoRegistro empleado = this.empleadoRegistroRepository.findByClave(empleadoVerificar.getClave());
-    if (empleado.getContraseña().equals(empleadoVerificar.getContrasena()))
+    if (empleado.getContrasena().equals(empleadoVerificar.getContrasena()))
         return true;
 
     return false;
+    }
+
+    @Override
+    public EmpleadoRegistro obtenerEmpleado(String clave) {
+        return this.empleadoRegistroRepository.findByClave(clave);
+    }
+
+    @Override
+    public EmpleadoRegistro crearEmpleado(EmpleadoRegistro empleado) {
+        objectMapper.registerModule(new JavaTimeModule());
+        return this.empleadoRegistroRepository.save(empleado);
     }
     
  

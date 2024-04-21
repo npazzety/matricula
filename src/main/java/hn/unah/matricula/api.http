@@ -8,7 +8,7 @@ Content-Type: application/json
 
 {
   "numeroCuenta": "20248570785",
-  "contraseña": "doriansamantha"
+  "contrasena": "doriansamantha"
 }
 
 ### crea un estudiante
@@ -32,3 +32,24 @@ GET http://localhost:8080/api/alumno/correo/caflores@unah.hn
 
 ### obtener por id
 GET http://localhost:8080/api/alumnos/20240070497
+
+### crear un empleado de registro
+POST http://localhost:8080/api/matricula/empleado/crear
+Content-Type: application/json
+
+{
+  "idEmpleado": 1,
+  "dni": "0801199025000",
+  "nombre": "nombre empleado",
+  "apellido": "empleado apellido", 
+  "direccion": "carrizal",
+  "telefono": "11223344",
+  "sexo": true,
+  "contrasena": "contrasena",
+  "fechaContratacion": "2023-03-03",
+  "clave": "112200",
+  "idExpediente": 0
+}
+
+### obtiene empleado por id
+GET http://localhost:8080/api/matricula/empleado/1234
