@@ -5,6 +5,7 @@ import lombok.Data;
 
 @Data
 public class CarreraDTO {
+  
   private String nombre;
   private String coordinador; 
 }

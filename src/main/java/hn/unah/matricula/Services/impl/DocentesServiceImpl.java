@@ -91,7 +91,6 @@ public class DocentesServiceImpl implements DocentesService {
 
         if (existeDocente) {
             return this.docentesRepository.findById(id).get();
-            
         }
         return null;
     }

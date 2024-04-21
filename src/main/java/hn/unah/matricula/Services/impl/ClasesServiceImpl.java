@@ -3,6 +3,8 @@ package hn.unah.matricula.Services.impl;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import hn.unah.matricula.Dtos.ClasesDTO;
 import hn.unah.matricula.Entities.Clases;
 import hn.unah.matricula.Entities.Docentes;
 import hn.unah.matricula.Entities.Prerequisitos;
@@ -45,6 +47,12 @@ public class ClasesServiceImpl implements ClasesService {
         List<Clases> clases = prerequisitos.getClases();
         
         return clases;
+    }
+
+    @Override
+    public Clases crearClases(ClasesDTO clases) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'crearClases'");
     }
 
 }
