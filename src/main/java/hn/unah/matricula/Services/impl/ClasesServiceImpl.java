@@ -38,7 +38,7 @@ public class ClasesServiceImpl implements ClasesService {
         
         Prerequisitos prerequisitos = prerequisitosRepository.findById(idClase).orElse(null);
         if (prerequisitos == null) {
-            throw new RuntimeException("No se encontró el requisito de : " + idClase);
+            throw new RuntimeException("No se encontró el requisito de la clase con id : " + idClase);
         }
         
         // Obtener los requisitos de la clase
