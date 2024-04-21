@@ -30,4 +30,5 @@ public class ClasesController {
     public List<Clases> obtenerClasesDeDocente(@PathVariable int idClase) {
         return clasesServiceImpl.obtenerRequisitosDeClases(idClase);
     }
+
 }
