@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import hn.unah.matricula.Dtos.CarreraDTO;
+import hn.unah.matricula.Dtos.CarrerasClasesDTO;
 import hn.unah.matricula.Entities.Carreras;
 import hn.unah.matricula.Entities.Docentes;
 import hn.unah.matricula.Repositories.CarrerasRepository;
@@ -42,6 +43,12 @@ public class CarrerasServiceImpl implements CarrerasService {
         } catch (Exception e) {
             return false;
         }
+    }
+
+    @Override
+    public List<Carreras> obtenerCarrerasPorClase(CarrerasClasesDTO carrerasClasesDTO) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'obtenerCarrerasPorClase'");
     }
 
 }
