@@ -1,13 +1,13 @@
 package hn.unah.matricula.Services.impl;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import hn.unah.matricula.Entities.Clases;
 import hn.unah.matricula.Entities.Docentes;
+import hn.unah.matricula.Entities.Prerequisitos;
 import hn.unah.matricula.Repositories.DocentesRepository;
+import hn.unah.matricula.Repositories.PrerequisitosRepository;
 import hn.unah.matricula.Services.ClasesService;
 
 @Service
@@ -15,6 +15,9 @@ public class ClasesServiceImpl implements ClasesService {
 
     @Autowired
     private DocentesRepository docentesRepository;
+
+    @Autowired
+    private PrerequisitosRepository prerequisitosRepository;
 
     @Override
     public List<Clases> obtenerClasesDeDocente(String numeroCuentaDocente) {
@@ -29,5 +32,20 @@ public class ClasesServiceImpl implements ClasesService {
         
         return clases;
     }
-    
+
+    @Override
+    public List<Clases> obtenerRequisitosDeClases(int idClase) {
+        
+        Prerequisitos prerequisitos = prerequisitosRepository.findById(idClase).orElse(null);
+        if (prerequisitos == null) {
+            throw new RuntimeException("No se encontró el requisito de la clase con id : " + idClase);
+        }
+        
+        // Obtener los requisitos de la clase
+        List<Clases> clases = prerequisitos.getClases();
+        
+        return clases;
+    }
+
 }
+    

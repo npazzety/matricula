@@ -6,4 +6,5 @@ import hn.unah.matricula.Entities.Prerequisitos;
 
 
 public interface PrerequisitosRepository extends CrudRepository<Prerequisitos, Integer>{
+
 }
