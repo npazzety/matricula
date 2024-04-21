@@ -10,5 +10,8 @@ public interface EmpleadoRegistroService {
     public List<EmpleadoRegistro> obtenerEmpleados();
 
     public boolean verificarEmpleado(DatosEmpleadosDTO empleadoVerificar);
+    
+    public EmpleadoRegistro obtenerEmpleado(String clave);
 
+    public EmpleadoRegistro crearEmpleado(EmpleadoRegistro empleado);
 }
