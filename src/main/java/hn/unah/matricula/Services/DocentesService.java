@@ -18,5 +18,7 @@ public interface DocentesService {
     public Docentes obtenerDocentePorId(String id);
 
     public List<Docentes> obtenerCoordinadores();
+
+    public Docentes getDocentePorClave(String clave);
     
 }
