@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class SalonDTO {
 
-    private String idEdificio;
+    private int idEdificio;
 
     private String nombre;
 
