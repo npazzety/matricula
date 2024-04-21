@@ -31,7 +31,6 @@ public class Salon {
     @JoinColumn(name = "idedificio", referencedColumnName = "idedificio")
     @ManyToOne
     @JsonBackReference
-    @JsonIgnore
     private Edificio edifio;
 
     private String nombre;
