@@ -82,8 +82,8 @@ POST http://localhost:8080/api/edificio/crear
 Content-Type: application/json
 
 {
-  "nombre": "B2",
-  "numeroPisos": 4
+  "nombre": "1847",
+  "numeroPisos": 6
 }
 
 

@@ -22,6 +22,8 @@ public class SalonServiceImpl  implements SalonService{
     public Salon CrearSalon(SalonDTO salon) {
 
         Salon nvosalon = new Salon();
+        
+        
 
         nvosalon.setNombre(salon.getNombre());
         nvosalon.setEdifio(this.edificioRepository.findById(salon.getIdEdificio()).get());
