@@ -8,6 +8,8 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
@@ -25,6 +27,7 @@ public class Salon {
     @Id
     @Column(name = "idsalon")
     @JsonManagedReference
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String idSalon;
 
     @JoinColumn(name = "idedificio", referencedColumnName = "idedificio")
@@ -43,8 +46,7 @@ public class Salon {
     @JsonIgnore
     private List<Docentes> docentes; 
 
+    private String observacion;
 
-    @ManyToMany
-    @JoinTable(name = "salon_equipo", joinColumns = @JoinColumn(name = "idsalon"), inverseJoinColumns = @JoinColumn(name = "idequipo") )
-    private List<Equipos> equipos;
+
 }

@@ -1,8 +1,8 @@
 package hn.unah.matricula.Entities;
 
 import java.sql.Date;
-
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -31,6 +31,7 @@ public class Seccion {
     @JoinColumn(name = "idclase", referencedColumnName = "idclase")
     @ManyToOne
     @JsonBackReference
+    @JsonIgnore
     private Clases clases;
 
     @JoinColumn(name = "iddocente", referencedColumnName = "numerocuenta")
@@ -42,6 +43,5 @@ public class Seccion {
     @OneToOne
     @JsonBackReference
     private Salon salon;
-    
     
 }

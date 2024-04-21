@@ -42,7 +42,7 @@ public class DocentesServiceImpl implements DocentesService {
         Docentes nvoDocente = new Docentes();
         nvoDocente.setNombre(docente.getNombre());
         nvoDocente.setApellido(docente.getApellido());
-        nvoDocente.setCorre(docente.getCorreo());
+        nvoDocente.setCorreo(docente.getCorreo());
         nvoDocente.setSexo(docente.isSexo());
         nvoDocente.setDepartamento(docente.getDepartamento());
         nvoDocente.setFoto(docente.getFoto());
@@ -56,7 +56,6 @@ public class DocentesServiceImpl implements DocentesService {
 
         if (existeDocente) {
             return this.docentesRepository.findById(id).get();
-            
         }
         return null;
     }

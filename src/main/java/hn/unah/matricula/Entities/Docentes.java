@@ -35,7 +35,7 @@ public class Docentes {
 
     private String direccion;
 
-    private String corre;
+    private String correo;
 
     private String departamento;
 
