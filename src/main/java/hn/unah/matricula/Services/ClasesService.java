@@ -8,7 +8,7 @@ public interface ClasesService {
     
     public List<Clases> obtenerClasesDeDocente(String numeroCuentaDocente);
 
-    public List<Clases> obtenerRequisitosDeClases(int idClase);
 
+    public List<Clases> obtenerRequisitosDeClases(int idClase);
 
 }
