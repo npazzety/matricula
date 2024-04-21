@@ -48,4 +48,11 @@ public class DocentesController {
     public Docentes obtenerDocentePorId(@RequestParam(name = "id") String id){
         return this.docentesServiceImpl.obtenerDocentePorId(id);
     }
+
+    @Operation(summary = "Obtiene una lista de todos los coordinadoes")
+    @GetMapping("/coordinadores")
+    public List<Docentes> getCoordinadores() {
+        return this.docentesServiceImpl.obtenerCoordinadores();
+    }
+    
 }
