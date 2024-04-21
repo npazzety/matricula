@@ -38,8 +38,7 @@ POST http://localhost:8080/api/matricula/empleado/crear
 Content-Type: application/json
 
 {
-  "idEmpleado": 1,
-  "dni": "0801199025000",
+  "idEmpleado": 1131,
   "nombre": "nombre empleado",
   "apellido": "empleado apellido", 
   "direccion": "carrizal",
@@ -47,8 +46,7 @@ Content-Type: application/json
   "sexo": true,
   "contrasena": "contrasena",
   "fechaContratacion": "2023-03-03",
-  "clave": "112200",
-  "idExpediente": 0
+  "clave": "112200"
 }
 
 ### obtiene empleado por id
