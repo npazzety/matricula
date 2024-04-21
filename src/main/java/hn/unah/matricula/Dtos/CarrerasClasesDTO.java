@@ -6,21 +6,12 @@ import hn.unah.matricula.Entities.Clases;
 import lombok.Data;
 
 @Data
-public class RequisitosClaseDTO {
+public class CarrerasClasesDTO {
 
-    private int idClase;
-
-    private int idPrerequisito;
-    
-    private String codigo;
+    private int idCarrera;
 
     private String nombre;
 
     private List<Clases> clases;
-
-
-
-
-    
     
 }
