@@ -97,3 +97,19 @@ Content-Type: application/json
   "nombre": "201",
   "capacidad": 25
 }
+
+
+### obtiene clases por carrera
+GET http://localhost:8080/api/matricula/carreras/clases/123i
+
+### obtiene coordinadores
+GET http://localhost:8080/api/matricula/coordinadores
+
+### crear carrera
+POST http://localhost:8080/api/matricula/carreras/registrar
+Content-Type: application/json
+
+{
+  "nombre": "Ingenieria en sistemas",
+  "coordinador": "20246940812"
+}

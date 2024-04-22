@@ -5,9 +5,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 import hn.unah.matricula.Dtos.CarreraDTO;
 import hn.unah.matricula.Dtos.CarrerasClasesDTO;
 import hn.unah.matricula.Entities.Carreras;
+import hn.unah.matricula.Entities.Clases;
 import hn.unah.matricula.Entities.Docentes;
 import hn.unah.matricula.Repositories.CarrerasRepository;
 import hn.unah.matricula.Repositories.DocentesRepository;
@@ -38,7 +40,7 @@ public class CarrerasServiceImpl implements CarrerasService {
             registroCarrera.setDocentes(coordinador);
 
             registroCarrera.setCantidadestudiantes(0);
-    
+            this.carrerasRepository.save(registroCarrera);
             return true; 
         } catch (Exception e) {
             return false;
@@ -49,6 +51,12 @@ public class CarrerasServiceImpl implements CarrerasService {
     public List<Carreras> obtenerCarrerasPorClase(CarrerasClasesDTO carrerasClasesDTO) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'obtenerCarrerasPorClase'");
+    }
+
+    @Override
+    public List<Clases> obtenerClasesPorCarrera(String idCarrera) {
+        Carreras carrera = this.carrerasRepository.findById(Integer.parseInt(idCarrera)).get();
+        return carrera.getClases();
     }
 
 }

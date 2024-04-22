@@ -4,17 +4,17 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import hn.unah.matricula.Dtos.CarreraDTO;
 import hn.unah.matricula.Entities.Carreras;
-
+import hn.unah.matricula.Entities.Clases;
 import hn.unah.matricula.Services.impl.CarrerasServiceImpl;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
-
+import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
 @RequestMapping("/api/matricula/carreras")
@@ -38,5 +38,11 @@ public class CarrerasController {
         } catch(Exception e) {
             return false;
         }
+    }
+
+    
+    @GetMapping("/clases")
+    public List<Clases> obtenerClasesPorCarrera(@PathVariable String idCarrera) {
+        return this.carrerasServiceImpl.obtenerClasesPorCarrera(idCarrera);
     }
 }
