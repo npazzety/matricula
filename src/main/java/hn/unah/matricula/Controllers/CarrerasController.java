@@ -45,7 +45,7 @@ public class CarrerasController {
         return this.carrerasServiceImpl.obtenerCarreraDatos(carrera);
     }
     
-    @GetMapping("/clases")
+    @GetMapping("/{idCarrera}/clases")
     public List<Clases> obtenerClasesPorCarrera(@PathVariable String idCarrera) {
         return this.carrerasServiceImpl.obtenerClasesPorCarrera(idCarrera);
     }

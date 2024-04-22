@@ -3,7 +3,6 @@ package hn.unah.matricula.Entities;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.Column;
@@ -15,6 +14,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -26,7 +26,6 @@ public class Clases {
     @Id
     @Column(name = "idclase")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @JsonManagedReference
     private int idClase;
 
     private String codigo;
@@ -35,26 +34,27 @@ public class Clases {
 
     private int uv;
 
+    @OneToMany(mappedBy = "clases")
+    private List<Seccion> secciones;
+
     @ManyToMany(mappedBy = "clases")
     @JsonManagedReference
-    @JsonIgnore
     private List<Alumnos> alumnos;  
 
-    @ManyToMany
-    @JoinTable(name = "clases_carrera", joinColumns = @JoinColumn(name = "idclase"), inverseJoinColumns = @JoinColumn(name = "idcarrera"))
-    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name="idcarrera", referencedColumnName = "idcarrera")
     @JsonBackReference
-    private List<Carreras> carreras;
+    private Carreras carrera;
 
     @ManyToMany
     @JoinTable(name = "clase_requisito", joinColumns = @JoinColumn(name = "idclase"), inverseJoinColumns = @JoinColumn(name = "idprerequisito"))
     @JsonBackReference
-    @JsonIgnore
     private List<Prerequisitos> prerequisitos;
 
     
     @JoinColumn(name = "idmatricula", referencedColumnName = "idmatricula")
     @ManyToOne
     @JsonBackReference
+
     private Matricula matricula;
 }
