@@ -3,6 +3,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import hn.unah.matricula.Dtos.SeccionDTO;
+import hn.unah.matricula.Entities.Clases;
 import hn.unah.matricula.Entities.Seccion;
 import hn.unah.matricula.Repositories.ClasesRepository;
 import hn.unah.matricula.Repositories.DocentesRepository;
@@ -29,13 +30,19 @@ public class SeccionServiceImpl implements SeccionService{
     public Seccion CrearSeccion(SeccionDTO seccion) {
         Seccion nvoseccion = new Seccion();
 
-        nvoseccion.setClases(this.clasesRepository.findById(seccion.getIdClase()).get());
+        // agregar la seccion a la clase
+        Clases clase = this.clasesRepository.findById(seccion.getIdClase()).get();
+        nvoseccion.setClases(clase);
         nvoseccion.setHoraInicio(seccion.getHoraInicio());
         nvoseccion.setHoraFin(seccion.getHoraFin());
         nvoseccion.setSalon(this.salonRepository.findById(Integer.parseInt(seccion.getIdSalon())).get());
         nvoseccion.setDocentes(this.docentesRepository.findById(seccion.getNumeroCuenta()).get());
-    
-        return this.seccionRepository.save(nvoseccion);
+        Seccion sec = this.seccionRepository.save(nvoseccion);
+        if (!(clase.getSecciones().contains(nvoseccion))) {
+            clase.getSecciones().add(sec);
+            this.clasesRepository.save(clase);
+        }
+        return sec;
     }
     
 }

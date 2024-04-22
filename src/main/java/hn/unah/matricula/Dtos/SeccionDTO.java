@@ -1,6 +1,6 @@
 package hn.unah.matricula.Dtos;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
 import lombok.Data;
 @Data
@@ -8,9 +8,9 @@ public class SeccionDTO {
 
     private int idClase;
 
-    private Date horaInicio;
+    private LocalDate horaInicio;
 
-    private Date horaFin;
+    private LocalDate horaFin;
 
     private String numeroCuenta;
 
