@@ -37,7 +37,7 @@ public class Clases {
     @ManyToMany(mappedBy = "clases")
     @JsonManagedReference
     @JsonIgnore
-    private List<Alumnos> alumnos; 
+    private List<Alumnos> alumnos;  
 
     @ManyToMany
     @JoinTable(name = "clases_carrera", joinColumns = @JoinColumn(name = "idclase"), inverseJoinColumns = @JoinColumn(name = "idcarrera"))

@@ -8,12 +8,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import hn.unah.matricula.Dtos.CarreraClasesDatosDTO;
 import hn.unah.matricula.Dtos.CarreraDTO;
 import hn.unah.matricula.Entities.Carreras;
 
 import hn.unah.matricula.Services.impl.CarrerasServiceImpl;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 
 @RestController
@@ -39,4 +42,10 @@ public class CarrerasController {
             return false;
         }
     }
+
+    @GetMapping("/obtenerCarreraDatos")
+    public CarreraClasesDatosDTO getMethodName(@RequestParam CarreraClasesDatosDTO carrera) {
+        return this.carrerasServiceImpl.obtenerCarreraDatos(carrera);
+    }
+    
 }

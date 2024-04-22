@@ -43,5 +43,6 @@ public class Seccion {
     @OneToOne
     @JsonBackReference
     private Salon salon;
+
     
 }
