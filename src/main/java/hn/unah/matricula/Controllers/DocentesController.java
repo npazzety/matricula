@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -33,7 +34,7 @@ public class DocentesController {
 
     @Operation(summary = "Verifica el login del docente")
     @PostMapping("/docente/verificacion")
-    public boolean loginDocente(DatosDocentesDTO logindocente){
+    public boolean loginDocente(@RequestBody DatosDocentesDTO logindocente){
         return this.docentesServiceImpl.verificarDocente(logindocente);
     }
 
@@ -43,9 +44,9 @@ public class DocentesController {
         return this.docentesServiceImpl.crearDocente(docente, image);
     }
 
-    @Operation(summary = "Obtine un docente por id")
-    @GetMapping("/obtenerPorID")
-    public Docentes obtenerDocentePorId(@RequestParam(name = "id") String id){
+    @Operation(summary = "Obtiene un docente por id")
+    @GetMapping("/docente/obtener/{id}")
+    public Docentes obtenerDocentePorId(@PathVariable String id){
         return this.docentesServiceImpl.obtenerDocentePorId(id);
     }
 

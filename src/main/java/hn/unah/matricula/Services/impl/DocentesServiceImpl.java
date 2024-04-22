@@ -33,14 +33,14 @@ public class DocentesServiceImpl implements DocentesService {
     
     @Override
     public boolean verificarDocente(DatosDocentesDTO docenteVerificar) {
-
-        if (null == this.docentesRepository.findByClave(docenteVerificar.getClave()))
-          return false;
-    
-        Docentes docente = this.docentesRepository.findByClave(docenteVerificar.getClave());
-        if (docente.getContrasena().equals(docenteVerificar.getContrasena()))
+        
+        if (null == this.docentesRepository.findById(docenteVerificar.getClave()).get())
+            return false;
+            // como el alumno existe se comprueba la contrasena
+        Docentes alumno = this.docentesRepository.findById(docenteVerificar.getClave()).get();
+        if (alumno.getContrasena().equals(docenteVerificar.getContrasena())){
             return true;
-
+        }
         return false;
     }
 
@@ -88,13 +88,8 @@ public class DocentesServiceImpl implements DocentesService {
 
     @Override
     public Docentes obtenerDocentePorId(String id) {
-
-        boolean existeDocente = this.docentesRepository.findById(id).isPresent();
-
-        if (existeDocente) {
-            return this.docentesRepository.findById(id).get();
-        }
-        return null;
+        objectMapper.registerModule(new JavaTimeModule());
+        return this.docentesRepository.findById(id).get();
     }
 
     @Override
