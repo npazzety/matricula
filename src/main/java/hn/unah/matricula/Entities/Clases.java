@@ -14,6 +14,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -37,7 +38,7 @@ public class Clases {
     @ManyToMany(mappedBy = "clases")
     @JsonManagedReference
     @JsonIgnore
-    private List<Alumnos> alumnos; 
+    private List<Alumnos> alumnos;  
 
     @ManyToMany
     @JoinTable(name = "clases_carrera", joinColumns = @JoinColumn(name = "idclase"), inverseJoinColumns = @JoinColumn(name = "idcarrera"))
@@ -50,4 +51,10 @@ public class Clases {
     @JsonBackReference
     @JsonIgnore
     private List<Prerequisitos> prerequisitos;
+
+    
+    @JoinColumn(name = "idmatricula", referencedColumnName = "idmatricula")
+    @ManyToOne
+    @JsonBackReference
+    private Matricula matricula;
 }

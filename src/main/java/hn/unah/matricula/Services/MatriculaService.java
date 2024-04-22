@@ -1,5 +1,5 @@
 package hn.unah.matricula.Services;
 
-public interface EquiposService {
+public interface MatriculaService {
     
 }

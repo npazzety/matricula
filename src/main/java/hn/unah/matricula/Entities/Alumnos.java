@@ -69,6 +69,7 @@ public class Alumnos {
     @JoinColumn(name="idexpediente", referencedColumnName = "idexpediente")
     @JsonBackReference
     private Expediente expediente;
+
 }
 
 

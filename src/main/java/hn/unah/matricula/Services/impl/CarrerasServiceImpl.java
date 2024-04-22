@@ -1,11 +1,11 @@
 package hn.unah.matricula.Services.impl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-
+import hn.unah.matricula.Dtos.CarreraClasesDatosDTO;
 import hn.unah.matricula.Dtos.CarreraDTO;
 import hn.unah.matricula.Dtos.CarrerasClasesDTO;
 import hn.unah.matricula.Entities.Carreras;
@@ -45,6 +45,22 @@ public class CarrerasServiceImpl implements CarrerasService {
         } catch (Exception e) {
             return false;
         }
+    }
+
+    @Override
+    public CarreraClasesDatosDTO obtenerCarreraDatos(CarreraClasesDatosDTO infocarrera) {
+        Optional<Carreras> carreraOptional = carrerasRepository.findById(infocarrera.getIdCarrera());
+
+        if (carreraOptional.isPresent()) {
+        Carreras carreraexist = carreraOptional.get();
+
+        List<Clases> clases = carreraexist.getClases();
+        infocarrera.setClases(clases);
+
+        return infocarrera ;
+        }
+
+        return null;
     }
 
     @Override
