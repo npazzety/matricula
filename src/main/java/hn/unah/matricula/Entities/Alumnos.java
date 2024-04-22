@@ -63,13 +63,11 @@ public class Alumnos {
 
     @OneToOne
     @JsonBackReference
-    @JsonIgnore
     private Carreras carrera;
 
     @OneToOne
     @JoinColumn(name="idexpediente", referencedColumnName = "idexpediente")
     @JsonBackReference
-    @JsonIgnore
     private Expediente expediente;
 }
 
