@@ -1,14 +1,17 @@
 package hn.unah.matricula.Services.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import hn.unah.matricula.Dtos.ClasesCardDTO;
 import hn.unah.matricula.Dtos.ClasesDTO;
 import hn.unah.matricula.Entities.Clases;
 import hn.unah.matricula.Entities.Docentes;
 import hn.unah.matricula.Entities.Prerequisitos;
+import hn.unah.matricula.Entities.Seccion;
 import hn.unah.matricula.Repositories.ClasesRepository;
 import hn.unah.matricula.Repositories.DocentesRepository;
 import hn.unah.matricula.Repositories.PrerequisitosRepository;
@@ -36,7 +39,7 @@ public class ClasesServiceImpl implements ClasesService {
         
         // Obtener las clases asociadas a las carreras del docente
         List<Clases> clases = docente.getCarreras().getClases();
-        
+
         return clases;
     }
 
@@ -62,6 +65,28 @@ public class ClasesServiceImpl implements ClasesService {
         nvoclase.setUv(clases.getUv());
 
         return this.clasesRepository.save(nvoclase);
+    }
+
+    @Override
+    public List<ClasesCardDTO> obtenerSeccionesDocente(String numeroCuentaDocente) {
+       
+        Docentes docente = docentesRepository.findById(numeroCuentaDocente).orElse(null);
+        if (docente == null) {
+            throw new RuntimeException("No se encontró el docente con ID: " + numeroCuentaDocente);
+        }
+        
+        List<ClasesCardDTO> secciones = new ArrayList<>();
+        for (Seccion seccion : docente.getSecciones()) {
+            Clases clase = seccion.getClases();
+
+            ClasesCardDTO claseCard = new ClasesCardDTO();
+            claseCard.setNombre(clase.getNombre());
+            claseCard.setCodigo(clase.getCodigo());
+            claseCard.setUv(clase.getUv());
+            claseCard.setIdseccion(seccion.getIdSeccion());
+            secciones.add(claseCard);
+        }
+        return secciones;
     }
 
 }
