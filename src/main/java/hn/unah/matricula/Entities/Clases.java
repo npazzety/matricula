@@ -56,5 +56,6 @@ public class Clases {
     @JoinColumn(name = "idmatricula", referencedColumnName = "idmatricula")
     @ManyToOne
     @JsonBackReference
+
     private Matricula matricula;
 }

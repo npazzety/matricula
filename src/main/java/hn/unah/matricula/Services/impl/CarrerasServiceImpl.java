@@ -63,16 +63,18 @@ public class CarrerasServiceImpl implements CarrerasService {
         return null;
     }
 
-    @Override
-    public List<Carreras> obtenerCarrerasPorClase(CarrerasClasesDTO carrerasClasesDTO) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'obtenerCarrerasPorClase'");
-    }
+   
 
     @Override
     public List<Clases> obtenerClasesPorCarrera(String idCarrera) {
         Carreras carrera = this.carrerasRepository.findById(Integer.parseInt(idCarrera)).get();
         return carrera.getClases();
+    }
+
+    @Override
+    public List<Carreras> obtenerCarrerasPorClase(CarrerasClasesDTO carrerasClasesDTO) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'obtenerCarrerasPorClase'");
     }
 
 }

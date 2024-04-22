@@ -29,6 +29,7 @@ public class Matricula {
     private Alumnos alumno;
 
     @OneToMany(mappedBy = "matricula")
+
     private List<Clases> clases;
 
     @Column(name = "fechainiciomatricula")
