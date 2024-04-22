@@ -1,8 +1,7 @@
 package hn.unah.matricula.Entities;
 
-import java.sql.Date;
+import java.time.LocalDate;
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -23,15 +22,14 @@ public class Seccion {
     private int idSeccion;
 
     @Column(name = "horainicio")
-    private Date horaInicio;
+    private LocalDate horaInicio;
 
     @Column(name = "horafin")
-    private Date horaFin;
+    private LocalDate horaFin;
 
     @JoinColumn(name = "idclase", referencedColumnName = "idclase")
     @ManyToOne
     @JsonBackReference
-    @JsonIgnore
     private Clases clases;
 
     @JoinColumn(name = "iddocente", referencedColumnName = "numerocuenta")

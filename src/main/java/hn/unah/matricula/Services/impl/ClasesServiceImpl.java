@@ -8,10 +8,12 @@ import org.springframework.stereotype.Service;
 
 import hn.unah.matricula.Dtos.ClasesCardDTO;
 import hn.unah.matricula.Dtos.ClasesDTO;
+import hn.unah.matricula.Entities.Carreras;
 import hn.unah.matricula.Entities.Clases;
 import hn.unah.matricula.Entities.Docentes;
 import hn.unah.matricula.Entities.Prerequisitos;
 import hn.unah.matricula.Entities.Seccion;
+import hn.unah.matricula.Repositories.CarrerasRepository;
 import hn.unah.matricula.Repositories.ClasesRepository;
 import hn.unah.matricula.Repositories.DocentesRepository;
 import hn.unah.matricula.Repositories.PrerequisitosRepository;
@@ -25,6 +27,9 @@ public class ClasesServiceImpl implements ClasesService {
 
     @Autowired
     private PrerequisitosRepository prerequisitosRepository;
+
+    @Autowired
+    private CarrerasRepository carreraRepo;
 
     @Autowired
     private ClasesRepository clasesRepository;
@@ -63,6 +68,14 @@ public class ClasesServiceImpl implements ClasesService {
         nvoclase.setCodigo(clases.getCodigo());
         nvoclase.setNombre(clases.getNombre());
         nvoclase.setUv(clases.getUv());
+
+        // se asocia con la carrera
+        Carreras carrera = this.carreraRepo.findById(clases.getIdCarrera()).get();
+        if (!(carrera.getClases().contains(nvoclase))) {
+            carrera.getClases().add(nvoclase);
+            this.carreraRepo.save(carrera);
+        }
+        nvoclase.setCarrera(carrera);
 
         return this.clasesRepository.save(nvoclase);
     }

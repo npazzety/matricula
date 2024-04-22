@@ -12,5 +12,7 @@ public class ClasesDTO {
     private String nombre;
 
     private int uv;
+
+    private int idCarrera;
     
 }

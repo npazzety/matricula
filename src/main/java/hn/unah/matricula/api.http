@@ -110,6 +110,20 @@ POST http://localhost:8080/api/matricula/carreras/registrar
 Content-Type: application/json
 
 {
-  "nombre": "Ingenieria en sistemas",
+  "nombre": "Lenguas Extranjeras",
   "coordinador": "20246940812"
+}
+
+### obtener clases por carrera
+GET http://localhost:8080/api/matricula/carreras/1/clases
+
+### crear clase
+POST http://localhost:8080/api/matricula/clases/crearClase
+Content-Type: application/json
+
+{
+  "codigo": "is-310",
+  "nombre": "Algoritmos y Estructura De Datos",
+  "uv": 4,
+  "idCarrera": 1
 }
