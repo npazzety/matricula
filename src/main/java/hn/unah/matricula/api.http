@@ -127,3 +127,16 @@ Content-Type: application/json
   "uv": 4,
   "idCarrera": 1
 }
+
+### crear matricula info
+POST http://localhost:8080/api/matricula/crear/nuevo
+Content-Type: application/json
+
+{
+  "fechaComienzo": "2024-04-23", 
+  "fechaFinal": "2024-04-25",
+  "horaComienzo": "09:00",
+  "horaFinal": "23:00",
+  "anio": "2024",
+  "periodo": "I"
+}
