@@ -1,6 +1,6 @@
 package hn.unah.matricula.Entities;
 
-import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import jakarta.persistence.Column;
@@ -28,28 +28,28 @@ public class Matricula {
     @JoinColumn(name = "numerocuenta", referencedColumnName = "numerocuenta")
     private Alumnos alumno;
 
-    @OneToMany(mappedBy = "clases")
+    @OneToMany(mappedBy = "matricula")
     private List<Clases> clases;
 
     @Column(name = "fechainiciomatricula")
-    private Date fechaInicioMatricula;
+    private LocalDate fechaInicioMatricula;
 
     @Column(name = "fechafinmatricula")
-    private Date fechaFinMatricula;
+    private LocalDate fechaFinMatricula;
 
     @Column(name = "horainiciomatricula")
-    private Date horainicioMatricula;
+    private LocalDate horainicioMatricula;
 
     @Column(name = "horafinmatricula")
-    private Date horafinMatricula;
+    private LocalDate horafinMatricula;
     
     @Column(name = "estadomatricula")
     private boolean estadoMatricula;
 
     @Column(name = "fechacreacion")
-    private Date fechaCreacion;
+    private LocalDate fechaCreacion;
 
     @Column(name = "fechaactualizacion")
-    private Date fechaActualizacion;
+    private LocalDate fechaActualizacion;
     
 }
