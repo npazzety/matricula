@@ -102,5 +102,11 @@ public class ClasesServiceImpl implements ClasesService {
         return secciones;
     }
 
+    @Override
+    public List<Clases> obtenerClases() {
+        return (List<Clases>) this.clasesRepository.findAll();
+    }
+
+    
 }
     

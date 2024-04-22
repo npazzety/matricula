@@ -16,5 +16,6 @@ public interface ClasesService {
     public List<Clases> obtenerRequisitosDeClases(int idClase);
 
     public List<ClasesCardDTO>  obtenerSeccionesDocente(String numerocuenta);  
-
+ 
+    public List<Clases> obtenerClases(); 
 }

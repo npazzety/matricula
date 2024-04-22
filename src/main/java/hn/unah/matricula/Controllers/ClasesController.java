@@ -37,6 +37,7 @@ public class ClasesController {
         return clasesServiceImpl.obtenerRequisitosDeClases(idClase);
     }
 
+    @Operation(summary = "crea una clase")
     @PostMapping("/crearClase")
     public Clases postMethodName(@RequestBody ClasesDTO clases) {
         return this.clasesServiceImpl.crearClases(clases);
@@ -49,5 +50,10 @@ public class ClasesController {
     }
     
     
+    @Operation(summary = "devuelve lista de todas las clases")
+    @GetMapping("/obtener")
+    public List<Clases> obtenerClases() {
+        return this.clasesServiceImpl.obtenerClases();
+    }
 
 }
