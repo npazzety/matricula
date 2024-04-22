@@ -15,7 +15,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
@@ -73,10 +72,6 @@ public class Alumnos {
     @JsonIgnore
     private Expediente expediente;
 
-    @JoinColumn(name = "idmatricula", referencedColumnName = "idmatricula")
-    @ManyToOne
-    @JsonBackReference
-    private Matricula matricula;
 }
 
 
