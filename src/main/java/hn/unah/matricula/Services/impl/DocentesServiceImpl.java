@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 import hn.unah.matricula.Dtos.DatosDocentesDTO;
 import hn.unah.matricula.Dtos.DocenteDTO;
@@ -50,6 +51,7 @@ public class DocentesServiceImpl implements DocentesService {
 
     @Override
     public Docentes crearDocente(String docenteJsonString, MultipartFile image) {
+        objectMapper.registerModule(new JavaTimeModule());
         DocenteDTO docente = null;
         try {
             docente = objectMapper.readValue(docenteJsonString, DocenteDTO.class); 
@@ -74,7 +76,7 @@ public class DocentesServiceImpl implements DocentesService {
         nvoDocente.setNombre(docente.getNombre());
         nvoDocente.setApellido(docente.getApellido());
         nvoDocente.setCoordinador(docente.isCoordinador());
-        nvoDocente.setEspecializacion(docente.getEspecilizacion());
+        nvoDocente.setEspecializacion(docente.getEspecializacion());
         nvoDocente.setContrasena(docente.getContrasena());
         nvoDocente.setCorreo(correo);
         nvoDocente.setSexo(docente.isSexo());
@@ -97,6 +99,7 @@ public class DocentesServiceImpl implements DocentesService {
 
     @Override
     public List<Docentes> obtenerCoordinadores() {
+        objectMapper.registerModule(new JavaTimeModule());
         ArrayList<Docentes> coordinadores = new ArrayList<>();
         List<Docentes> docentes = (List<Docentes>) this.docentesRepository.findAll();
 

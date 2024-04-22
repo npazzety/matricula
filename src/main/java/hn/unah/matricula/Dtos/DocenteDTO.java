@@ -10,7 +10,7 @@ public class DocenteDTO {
     
     private String apellido;
 
-    private String especilizacion; 
+    private String especializacion; 
 
     private String contrasena;
 
