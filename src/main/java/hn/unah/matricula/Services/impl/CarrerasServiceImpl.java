@@ -5,12 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-<<<<<<< HEAD
 import hn.unah.matricula.Dtos.CarreraClasesDatosDTO;
-=======
-
->>>>>>> 9a175a9b89eb971c31b4d994832307c724ef0bcf
 import hn.unah.matricula.Dtos.CarreraDTO;
 import hn.unah.matricula.Dtos.CarrerasClasesDTO;
 import hn.unah.matricula.Entities.Carreras;
@@ -52,8 +47,6 @@ public class CarrerasServiceImpl implements CarrerasService {
         }
     }
 
-<<<<<<< HEAD
-
     @Override
     public CarreraClasesDatosDTO obtenerCarreraDatos(CarreraClasesDatosDTO infocarrera) {
         Optional<Carreras> carreraOptional = carrerasRepository.findById(infocarrera.getIdCarrera());
@@ -68,7 +61,8 @@ public class CarrerasServiceImpl implements CarrerasService {
         }
 
         return null;
-=======
+    }
+
     @Override
     public List<Carreras> obtenerCarrerasPorClase(CarrerasClasesDTO carrerasClasesDTO) {
         // TODO Auto-generated method stub
@@ -79,7 +73,6 @@ public class CarrerasServiceImpl implements CarrerasService {
     public List<Clases> obtenerClasesPorCarrera(String idCarrera) {
         Carreras carrera = this.carrerasRepository.findById(Integer.parseInt(idCarrera)).get();
         return carrera.getClases();
->>>>>>> 9a175a9b89eb971c31b4d994832307c724ef0bcf
     }
 
 }
