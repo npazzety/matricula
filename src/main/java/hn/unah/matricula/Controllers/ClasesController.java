@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import hn.unah.matricula.Dtos.ClasesCardDTO;
 import hn.unah.matricula.Dtos.ClasesDTO;
 import hn.unah.matricula.Entities.Clases;
 import hn.unah.matricula.Services.impl.ClasesServiceImpl;
@@ -40,6 +41,13 @@ public class ClasesController {
     public Clases postMethodName(@RequestBody ClasesDTO clases) {
         return this.clasesServiceImpl.crearClases(clases);
     }
+
+
+    @GetMapping("/secciones/{idDocente}")
+    public List<ClasesCardDTO> obtenerSeccionDocente(@PathVariable String idDocente) {
+        return this.clasesServiceImpl.obtenerSeccionesDocente(idDocente);
+    }
+    
     
 
 }

@@ -3,8 +3,6 @@ package hn.unah.matricula.Entities;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -18,22 +16,20 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 
-@Data
 @Entity
+@Data
 @Table(name = "salon")
 public class Salon {
     
 
-    @Id
+    @Id 
     @Column(name = "idsalon")
-    @JsonManagedReference
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String idSalon;
+    private int idSalon;
 
     @JoinColumn(name = "idedificio", referencedColumnName = "idedificio")
     @ManyToOne
     @JsonBackReference
-    @JsonIgnore
     private Edificio edifio;
 
     private String nombre;
@@ -43,7 +39,6 @@ public class Salon {
     @ManyToMany
     @JoinTable(name = "alumno_docente", joinColumns = @JoinColumn(name ="idalumno"), inverseJoinColumns = @JoinColumn(name = "iddocente"))
     @JsonBackReference
-    @JsonIgnore
     private List<Docentes> docentes; 
 
     private String observacion;

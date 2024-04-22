@@ -32,7 +32,7 @@ public class EmpleadoRegistroController {
     }
 
     @Operation(summary = "Crea un EmpleadoRegistro")
-    @PostMapping("/crearEmpleado")
+    @PostMapping("/empleado/crear")
     public EmpleadoRegistro crearEmpleadp(@RequestBody EmpleadoRegistroDTO empleado) {
         return this.empleadoRegistroServiceImpl.crearEmpleadoRegistro(empleado);
     }

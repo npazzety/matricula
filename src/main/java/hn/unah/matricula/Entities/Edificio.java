@@ -1,9 +1,10 @@
 package hn.unah.matricula.Entities;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Data;
@@ -14,10 +15,9 @@ import lombok.Data;
 
 public class Edificio {
 
-    @Id
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idedificio")
-    @JsonManagedReference
-    private String idEdificio;
+    private int idEdificio;
 
     private String nombre;
 

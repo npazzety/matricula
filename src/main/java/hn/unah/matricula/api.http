@@ -38,8 +38,7 @@ POST http://localhost:8080/api/matricula/empleado/crear
 Content-Type: application/json
 
 {
-  "idEmpleado": 1,
-  "dni": "0801199025000",
+  "idEmpleado": 1131,
   "nombre": "nombre empleado",
   "apellido": "empleado apellido", 
   "direccion": "carrizal",
@@ -47,8 +46,7 @@ Content-Type: application/json
   "sexo": true,
   "contrasena": "contrasena",
   "fechaContratacion": "2023-03-03",
-  "clave": "112200",
-  "idExpediente": 0
+  "clave": "112200"
 }
 
 ### obtiene empleado por id
@@ -61,4 +59,57 @@ Content-Type: application/json
 {
   "nombre": "INGENIERIA SISTEMAS",
   "coordinador": "20221001802"
+}
+
+### crear docente sin foto
+POST http://localhost:8080/api/matricula/docente/guardar
+Content-Type: multipart/form-data 
+
+{
+  "nombre": "erick vladimir",
+  "apellido": "coello baca",
+  "especializacion": "software",
+  "contrasena": "contrasena",
+  "sexo": true,
+  "coordinador": false,
+  "departamento": "copán"
+}
+
+### crear edificio
+POST http://localhost:8080/api/edificio/crear
+Content-Type: application/json
+
+{
+  "nombre": "F1",
+  "numeroPisos": 4
+}
+
+
+### obtener edificios
+GET http://localhost:8080/api/edificio/obtener/edificios
+
+### registrar salon
+POST http://localhost:8080/api/salon/crear
+Content-Type: application/json
+
+{
+  "idEdificio": "1",
+  "nombre": "201",
+  "capacidad": 25
+}
+
+
+### obtiene clases por carrera
+GET http://localhost:8080/api/matricula/carreras/clases/123i
+
+### obtiene coordinadores
+GET http://localhost:8080/api/matricula/coordinadores
+
+### crear carrera
+POST http://localhost:8080/api/matricula/carreras/registrar
+Content-Type: application/json
+
+{
+  "nombre": "Ingenieria en sistemas",
+  "coordinador": "20246940812"
 }

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -52,6 +53,12 @@ public class DocentesController {
     @GetMapping("/coordinadores")
     public List<Docentes> getCoordinadores() {
         return this.docentesServiceImpl.obtenerCoordinadores();
+    }
+
+    @Operation(summary = "obtiene un docente por su clave")
+    @GetMapping("/docente/{clave}")
+    public Docentes getDocentePorClave(@PathVariable String clave) {
+        return this.getDocentePorClave(clave);
     }
     
 }
