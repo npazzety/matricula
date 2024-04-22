@@ -32,7 +32,7 @@ public class SeccionServiceImpl implements SeccionService{
         nvoseccion.setClases(this.clasesRepository.findById(seccion.getIdClase()).get());
         nvoseccion.setHoraInicio(seccion.getHoraInicio());
         nvoseccion.setHoraFin(seccion.getHoraFin());
-        nvoseccion.setSalon(this.salonRepository.findById(seccion.getIdSalon()).get());
+        nvoseccion.setSalon(this.salonRepository.findById(Integer.parseInt(seccion.getIdSalon())).get());
         nvoseccion.setDocentes(this.docentesRepository.findById(seccion.getNumeroCuenta()).get());
     
         return this.seccionRepository.save(nvoseccion);

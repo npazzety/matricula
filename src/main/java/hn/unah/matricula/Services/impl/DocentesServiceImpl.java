@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 import hn.unah.matricula.Dtos.DatosDocentesDTO;
 import hn.unah.matricula.Dtos.DocenteDTO;
@@ -32,14 +33,14 @@ public class DocentesServiceImpl implements DocentesService {
     
     @Override
     public boolean verificarDocente(DatosDocentesDTO docenteVerificar) {
-
-        if (null == this.docentesRepository.findByClave(docenteVerificar.getClave()))
-          return false;
-    
-        Docentes docente = this.docentesRepository.findByClave(docenteVerificar.getClave());
-        if (docente.getContrasena().equals(docenteVerificar.getContrasena()))
+        
+        if (null == this.docentesRepository.findById(docenteVerificar.getClave()).get())
+            return false;
+            // como el alumno existe se comprueba la contrasena
+        Docentes alumno = this.docentesRepository.findById(docenteVerificar.getClave()).get();
+        if (alumno.getContrasena().equals(docenteVerificar.getContrasena())){
             return true;
-
+        }
         return false;
     }
 
@@ -50,6 +51,7 @@ public class DocentesServiceImpl implements DocentesService {
 
     @Override
     public Docentes crearDocente(String docenteJsonString, MultipartFile image) {
+        objectMapper.registerModule(new JavaTimeModule());
         DocenteDTO docente = null;
         try {
             docente = objectMapper.readValue(docenteJsonString, DocenteDTO.class); 
@@ -74,7 +76,7 @@ public class DocentesServiceImpl implements DocentesService {
         nvoDocente.setNombre(docente.getNombre());
         nvoDocente.setApellido(docente.getApellido());
         nvoDocente.setCoordinador(docente.isCoordinador());
-        nvoDocente.setEspecializacion(docente.getEspecilizacion());
+        nvoDocente.setEspecializacion(docente.getEspecializacion());
         nvoDocente.setContrasena(docente.getContrasena());
         nvoDocente.setCorreo(correo);
         nvoDocente.setSexo(docente.isSexo());
@@ -86,17 +88,13 @@ public class DocentesServiceImpl implements DocentesService {
 
     @Override
     public Docentes obtenerDocentePorId(String id) {
-
-        boolean existeDocente = this.docentesRepository.findById(id).isPresent();
-
-        if (existeDocente) {
-            return this.docentesRepository.findById(id).get();
-        }
-        return null;
+        objectMapper.registerModule(new JavaTimeModule());
+        return this.docentesRepository.findById(id).get();
     }
 
     @Override
     public List<Docentes> obtenerCoordinadores() {
+        objectMapper.registerModule(new JavaTimeModule());
         ArrayList<Docentes> coordinadores = new ArrayList<>();
         List<Docentes> docentes = (List<Docentes>) this.docentesRepository.findAll();
 
